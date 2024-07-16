@@ -1,5 +1,6 @@
 @import './reset';
-@import './public/font/montserrat';
+@import './animations';
+@import './public/font/font';
 
 html{
   background: #1a1a1a;
@@ -11,21 +12,24 @@ html{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #ffffff74;
+  background: #ffffff30;
   backdrop-filter: blur(2px);
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   left: -10px;
   mix-blend-mode: difference;
   top: -10px;
+  filter: drop-shadow(0 0 15px #b0ffd7c6);
   transition: width .3s ease-out, height .3s ease-out, left .3s ease-out, top .3s ease-out, background .3s ease-out;
-
   &.active{
     width: 50px;
     height: 50px;
     left: -25px;
     top: -25px;
     background: #00ff7e;
+  }
+  @media (max-width:767px) {
+    display: none;
   }
 }
 
@@ -36,8 +40,45 @@ html{
   z-index: 2;
   display: flex;
   justify-content: space-between;
+  &-logo{
+    font-family: 'Brutalworld';
+    font-size: 24px;
+  }
+  @media (max-width:767px) {
+    padding: 20px 20px;
+  }
 }
 
+.Button{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  &-toggler{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  &-line{
+    width: 40px;
+    height: 4px;
+    background: #ffffff;
+    transition: transform .3s;
+  }
+  &.isActive{
+    .Button-line--one{
+      transform: rotate(-45deg) translate(-6px, 6px);
+    }
+    .Button-line--two{
+      transform: rotate(45deg) translate(-4px, -4px);
+    }
+  }
+}
 .Content {
     height: 100vh;
     &-section{
@@ -58,7 +99,7 @@ html{
     height: 100%;
     top: calc(50% - 50vh);
     left: calc(50% - 50%);
-    background-image: url('../public/assets/humo.png');
+    background-image: url('/public/assets/humo.webp');
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -71,6 +112,46 @@ html{
     align-items: center;
     gap: 30px;
     z-index: 1;
+  }
+  &-logo{
+    position: relative;
+    font-size: 75px;
+    font-family: 'Brutalworld';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+    &::before{
+      content: "juano";
+      text-transform: uppercase;
+      position: absolute;
+      top: 0;
+      transform: translate(-4px, -7px);
+      filter: drop-shadow(0 0 3px #00ff7e);
+      color: transparent;
+      -webkit-text-stroke: 2px #00ff7e;
+      animation: neon-blink 5s infinite alternate;;
+    }
+    &::after{
+      content: "juano";
+      text-transform: uppercase;
+      position: absolute;
+      top: 0;
+      transform: translate(-4px, -7px);
+      filter: blur(4px);
+      color: transparent;
+      -webkit-text-stroke: 1px #00ff7e;
+      animation: neon-blink 5s infinite alternate;;
+    }
+  }
+  &-subtle{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    letter-spacing: 5px;
+    font-weight: 400;
   }
   &-description{
     font-size: 18px;
@@ -87,6 +168,22 @@ html{
     width: 100%;
     height: 99%;
     z-index: -1;
+  }
+  &-scrollIcon{
+    bottom: 50px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  &-scrollPlh{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  &-mouse{
+    width: 25px;
   }
   @media (max-width:767px) {
     height: 750px;
@@ -109,15 +206,130 @@ html{
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 25px;
   gap: 20px;
   &-item{
     padding: 10px;
     border: solid 1px #00ff7e;
     border-radius: 10px;
-    cursor: pointer;
+    transition: all .25s;
   } 
   &-icon{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
+  &-link{
+    cursor: none;
+  }
+}
+
+.Experience{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:0 210px;
+  &-content{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  &-texts{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &-title{
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  &-description{
+    font-size: 18px;
+    max-width: 600px;
+    word-break: auto-phrase;
+    color: #a4a1a1;
+  }
+  &-tools{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    border: solid 1px #ffffff40;
+    background: linear-gradient(149deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 4%) 17%, rgba(255, 255, 255, 4%) 76%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 0 7px #ffffff20;
+  }
+  &-tlTitle{
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+  &-list{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  &-cv{
+    width: 100%;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 1px #ffffff40;
+    background: linear-gradient(50deg, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 4%) 17%, rgba(255, 255, 255, 4%) 76%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 0 7px #ffffff20;
+  }
+  &-cvTitle{
+    font-size: 24px;
+    font-weight: 500;
+    text-transform:capitalize;
+  }
+  &-cvText{
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 10px;
+    text-transform:capitalize;
+    color: #a4a1a1;
+  }
+  &-icon{
+    height: 50px;
+    opacity: .4;
+    transition: all .25s;
+    &--html{
+      &:hover{
+        opacity: 1;
+        color : #e44d26;
+        filter: drop-shadow(0 0 5px #e44d26);
+      }
+    }
+  }
+  @media (max-width:767px) {
+    align-items: flex-start;
+    padding: 50px 10px;
+    &-content{
+      grid-template-columns: 1fr;
+    }
+    &-texts{
+      padding: 0;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    &-title{
+      font-size: 30px;
+    }
+}
+}
+
+.text-bolder{
+  font-weight: 700;
 }

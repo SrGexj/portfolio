@@ -1,0 +1,72 @@
+// estilos para animaciones 
+
+[data-anim]{
+  transition: all .5s ease-out;
+}
+
+[data-anim="show-in"]{
+  opacity: 0;
+  transform: translateY(50px);
+}
+[data-anim="show-out"]{
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+[data-anim="show-left"]{
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+[data-anim="show-right"]{
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+[data-anim="fade-in"]{
+  opacity: 0;
+}
+
+.inView{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+// keyframes para animaciones
+
+@keyframes neon-blink {
+    41%{
+      opacity: 1;
+    }
+    42%{
+      opacity: 1;
+    }
+    43%{
+      opacity: .4;
+    }
+    44% {
+      opacity: 1;
+    }
+    
+    45% {
+      opacity: .7;
+    }
+    
+    46% {
+      opacity: 1;
+    }
+    
+    98% {
+      opacity: 1;
+    }
+    
+    99% {
+      opacity: .5;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
+  
