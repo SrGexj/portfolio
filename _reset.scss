@@ -1,8 +1,13 @@
 /* Definimos las Custom properties */
 :root{
   /* Colores */
-  --negro         : #393939;
-  
+  --negro         : #ececec;
+  --blanco        : #393939;
+  --background    : #1a1a1a;
+  --backgroundAl  : #1a1a1ae6;
+  --borders       : #ffffff40; 
+  --shadows       : #ffffff20;
+  --primary       : #00ff7e;
   /* Tipografía */
   --tipo-principal   :  'Montserrat', Helvetica, Arial, sans-serif;
   --tipo-secundaria  : Verdana;
@@ -12,6 +17,11 @@
 @media (prefers-color-scheme: dark) {
   :root{
       --negro         : #ececec;
+      --blanco        : #393939;
+      --background    : #1a1a1a;
+      --backgroundAl  : #1a1a1ae6;
+      --borders       : #ffffff40; 
+      --shadows       : #ffffff20;
   }
 }
 
@@ -82,7 +92,7 @@ blockquote:before, blockquote:after, q:before, q:after {
 
 /* (Opcional) Configuramos el texto que seleccionamos */
 ::selection {
-  background-color: var(--negro);
+  background-color: var(--primary);
   color: var(--blanco);
 }
 
@@ -116,6 +126,7 @@ body {
   font-size   : 100%;
   font-family : var(--tipo-principal);
   color       : var(--negro);
+  background   : var(--background);
   /* (Opcional) */ hyphens: auto;
   /* (Opcional) */ font-smooth: always;
   /* (Opcional) */ -webkit-font-smoothing: antialiased;

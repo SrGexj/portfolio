@@ -3,7 +3,7 @@
 @import './public/font/font';
 
 html{
-  background: #1a1a1a;
+  color: #fafafa;
   cursor: none;
 }
 
@@ -26,7 +26,7 @@ html{
     height: 50px;
     left: -25px;
     top: -25px;
-    background: #00ff7e;
+    background: var(--primary);
   }
   @media (max-width:767px) {
     display: none;
@@ -67,7 +67,7 @@ html{
   &-line{
     width: 40px;
     height: 4px;
-    background: #ffffff;
+    background: var(--negro);
     transition: transform .3s;
   }
   &.isActive{
@@ -89,7 +89,7 @@ html{
 
 .Hero{
   position: relative;
-  background: radial-gradient(closest-side, #1a1a1ad3, #1a1a1a);
+  //background: radial-gradient(closest-side, #1a1a1ad3, #1a1a1a);
   overflow: hidden;
   color: var(--negro);
   &::before{
@@ -129,9 +129,9 @@ html{
       position: absolute;
       top: 0;
       transform: translate(-4px, -7px);
-      filter: drop-shadow(0 0 3px #00ff7e);
+      filter: drop-shadow(0 0 3px var(--primary));
       color: transparent;
-      -webkit-text-stroke: 2px #00ff7e;
+      -webkit-text-stroke: 2px var(--primary);
       animation: neon-blink 5s infinite alternate;;
     }
     &::after{
@@ -142,7 +142,7 @@ html{
       transform: translate(-4px, -7px);
       filter: blur(4px);
       color: transparent;
-      -webkit-text-stroke: 1px #00ff7e;
+      -webkit-text-stroke: 1px var(--primary);
       animation: neon-blink 5s infinite alternate;;
     }
   }
@@ -157,8 +157,8 @@ html{
     font-size: 18px;
     text-align: center;
     max-width: 600px;
-    word-break: auto-phrase;
-    color: #c9c9c9;
+    word-break: keep-all;
+    color: var(--text);
   }
   &-background{
     position: absolute;
@@ -168,6 +168,14 @@ html{
     width: 100%;
     height: 99%;
     z-index: -1;
+    &::before {
+      content: "";
+      background: radial-gradient(closest-side, var(--backgroundAl), var(--background) 75%);
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
   }
   &-scrollIcon{
     bottom: 50px;
@@ -251,7 +259,7 @@ html{
     font-size: 18px;
     max-width: 600px;
     word-break: auto-phrase;
-    color: #a4a1a1;
+    color: var(--text);
   }
   &-tools{
     width: 100%;
@@ -260,9 +268,9 @@ html{
     gap: 20px;
     border-radius: 10px;
     padding: 20px;
-    border: solid 1px #ffffff40;
+    border: solid 1px var(--borders);
     background: linear-gradient(149deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 4%) 17%, rgba(255, 255, 255, 4%) 76%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 0 0 7px #ffffff20;
+    box-shadow: 0 0 7px var(--shadows);
   }
   &-tlTitle{
     font-size: 30px;
@@ -285,9 +293,9 @@ html{
     gap: 20px;
     padding: 20px;
     border-radius: 10px;
-    border: solid 1px #ffffff40;
+    border: solid 1px var(--borders);
     background: linear-gradient(50deg, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 4%) 17%, rgba(255, 255, 255, 4%) 76%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 0 0 7px #ffffff20;
+    box-shadow: 0 0 7px var(--shadows);
   }
   &-cvTitle{
     font-size: 24px;
@@ -299,7 +307,7 @@ html{
     font-weight: 300;
     margin-top: 10px;
     text-transform:capitalize;
-    color: #a4a1a1;
+    color: var(--text);
   }
   &-icon{
     height: 50px;
@@ -310,6 +318,48 @@ html{
         opacity: 1;
         color : #e44d26;
         filter: drop-shadow(0 0 5px #e44d26);
+      }
+    }
+    &--css{
+      &:hover{
+        opacity: 1;
+        color : #264de4;
+        filter: drop-shadow(0 0 5px #264de4);
+      }
+    }
+    &--js{
+      &:hover{
+        opacity: 1;
+        color : #f0db4f;
+        filter: drop-shadow(0 0 5px #f0db4f);
+      }
+    }
+    &--node{
+      &:hover{
+        opacity: 1;
+        color : #3c873a;
+        filter: drop-shadow(0 0 5px #3c873a);
+      }
+    }
+    &--react{
+      &:hover{
+        opacity: 1;
+        color : #61dafb;
+        filter: drop-shadow(0 0 5px #61dafb);
+      }
+    }
+    &--sass{
+      &:hover{
+        opacity: 1;
+        color : #c69;
+        filter: drop-shadow(0 0 5px #c69);
+      }
+    }
+    &--wordpress{
+      &:hover{
+        opacity: 1;
+        color : #21759b;
+        filter: drop-shadow(0 0 5px #21759b);
       }
     }
   }

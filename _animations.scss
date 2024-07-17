@@ -1,7 +1,13 @@
 // estilos para animaciones 
 
 [data-anim]{
+  opacity: 0;
   transition: all .5s ease-out;
+}
+
+[data-anim="child"]{
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 [data-anim="show-in"]{
@@ -10,7 +16,7 @@
 }
 [data-anim="show-out"]{
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-25px);
 }
 
 [data-anim="show-left"]{

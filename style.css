@@ -2,7 +2,13 @@
 /* Definimos las Custom properties */
 :root {
   /* Colores */
-  --negro: #393939;
+  --negro: #ececec;
+  --blanco: #393939;
+  --background: #1a1a1a;
+  --backgroundAl: #1a1a1ae6;
+  --borders: #ffffff40;
+  --shadows: #ffffff20;
+  --primary: #00ff7e;
   /* Tipografía */
   --tipo-principal: "Montserrat", Helvetica, Arial, sans-serif;
   --tipo-secundaria: Verdana;
@@ -12,6 +18,11 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --negro: #ececec;
+    --blanco: #393939;
+    --background: #1a1a1a;
+    --backgroundAl: #1a1a1ae6;
+    --borders: #ffffff40;
+    --shadows: #ffffff20;
   }
 }
 /* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
@@ -87,11 +98,11 @@ blockquote:before, blockquote:after, q:before, q:after {
 
 /* (Opcional) Configuramos el texto que seleccionamos */
 ::-moz-selection {
-  background-color: var(--negro);
+  background-color: var(--primary);
   color: var(--blanco);
 }
 ::selection {
-  background-color: var(--negro);
+  background-color: var(--primary);
   color: var(--blanco);
 }
 
@@ -129,6 +140,7 @@ body {
   font-size: 100%;
   font-family: var(--tipo-principal);
   color: var(--negro);
+  background: var(--background);
   /* (Opcional) */
   -webkit-hyphens: auto;
           hyphens: auto;
@@ -141,7 +153,13 @@ body {
 }
 
 [data-anim] {
+  opacity: 0;
   transition: all 0.5s ease-out;
+}
+
+[data-anim=child] {
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 [data-anim=show-in] {
@@ -151,7 +169,7 @@ body {
 
 [data-anim=show-out] {
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-25px);
 }
 
 [data-anim=show-left] {
@@ -210,7 +228,7 @@ body {
   font-display: swap;
 }
 html {
-  background: #1a1a1a;
+  color: #fafafa;
   cursor: none;
 }
 
@@ -235,7 +253,7 @@ html {
   height: 50px;
   left: -25px;
   top: -25px;
-  background: #00ff7e;
+  background: var(--primary);
 }
 @media (max-width: 767px) {
   .mouse {
@@ -280,7 +298,7 @@ html {
 .Button-line {
   width: 40px;
   height: 4px;
-  background: #ffffff;
+  background: var(--negro);
   transition: transform 0.3s;
 }
 .Button.isActive .Button-line--one {
@@ -300,7 +318,6 @@ html {
 
 .Hero {
   position: relative;
-  background: radial-gradient(closest-side, rgba(26, 26, 26, 0.8274509804), #1a1a1a);
   overflow: hidden;
   color: var(--negro);
 }
@@ -342,9 +359,9 @@ html {
   position: absolute;
   top: 0;
   transform: translate(-4px, -7px);
-  filter: drop-shadow(0 0 3px #00ff7e);
+  filter: drop-shadow(0 0 3px var(--primary));
   color: transparent;
-  -webkit-text-stroke: 2px #00ff7e;
+  -webkit-text-stroke: 2px var(--primary);
   animation: neon-blink 5s infinite alternate;
 }
 .Hero-logo::after {
@@ -355,7 +372,7 @@ html {
   transform: translate(-4px, -7px);
   filter: blur(4px);
   color: transparent;
-  -webkit-text-stroke: 1px #00ff7e;
+  -webkit-text-stroke: 1px var(--primary);
   animation: neon-blink 5s infinite alternate;
 }
 .Hero-subtle {
@@ -369,8 +386,8 @@ html {
   font-size: 18px;
   text-align: center;
   max-width: 600px;
-  word-break: auto-phrase;
-  color: #c9c9c9;
+  word-break: keep-all;
+  color: var(--text);
 }
 .Hero-background {
   position: absolute;
@@ -380,6 +397,14 @@ html {
   width: 100%;
   height: 99%;
   z-index: -1;
+}
+.Hero-background::before {
+  content: "";
+  background: radial-gradient(closest-side, var(--backgroundAl), var(--background) 75%);
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 .Hero-scrollIcon {
   bottom: 50px;
@@ -463,7 +488,7 @@ html {
   font-size: 18px;
   max-width: 600px;
   word-break: auto-phrase;
-  color: #a4a1a1;
+  color: var(--text);
 }
 .Experience-tools {
   width: 100%;
@@ -472,9 +497,9 @@ html {
   gap: 20px;
   border-radius: 10px;
   padding: 20px;
-  border: solid 1px rgba(255, 255, 255, 0.2509803922);
+  border: solid 1px var(--borders);
   background: linear-gradient(149deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.04) 17%, rgba(255, 255, 255, 0.04) 76%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 7px rgba(255, 255, 255, 0.1254901961);
+  box-shadow: 0 0 7px var(--shadows);
 }
 .Experience-tlTitle {
   font-size: 30px;
@@ -497,9 +522,9 @@ html {
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
-  border: solid 1px rgba(255, 255, 255, 0.2509803922);
+  border: solid 1px var(--borders);
   background: linear-gradient(50deg, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 0.04) 17%, rgba(255, 255, 255, 0.04) 76%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 7px rgba(255, 255, 255, 0.1254901961);
+  box-shadow: 0 0 7px var(--shadows);
 }
 .Experience-cvTitle {
   font-size: 24px;
@@ -511,7 +536,7 @@ html {
   font-weight: 300;
   margin-top: 10px;
   text-transform: capitalize;
-  color: #a4a1a1;
+  color: var(--text);
 }
 .Experience-icon {
   height: 50px;
@@ -522,6 +547,36 @@ html {
   opacity: 1;
   color: #e44d26;
   filter: drop-shadow(0 0 5px #e44d26);
+}
+.Experience-icon--css:hover {
+  opacity: 1;
+  color: #264de4;
+  filter: drop-shadow(0 0 5px #264de4);
+}
+.Experience-icon--js:hover {
+  opacity: 1;
+  color: #f0db4f;
+  filter: drop-shadow(0 0 5px #f0db4f);
+}
+.Experience-icon--node:hover {
+  opacity: 1;
+  color: #3c873a;
+  filter: drop-shadow(0 0 5px #3c873a);
+}
+.Experience-icon--react:hover {
+  opacity: 1;
+  color: #61dafb;
+  filter: drop-shadow(0 0 5px #61dafb);
+}
+.Experience-icon--sass:hover {
+  opacity: 1;
+  color: #c69;
+  filter: drop-shadow(0 0 5px #c69);
+}
+.Experience-icon--wordpress:hover {
+  opacity: 1;
+  color: #21759b;
+  filter: drop-shadow(0 0 5px #21759b);
 }
 @media (max-width: 767px) {
   .Experience {

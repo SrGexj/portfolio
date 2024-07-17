@@ -18,7 +18,7 @@ window.addEventListener('resize', onResize)
 let currentPosition = 0
 let targetPosition = 0
 let isScrolling = false
-let acelleration = .1
+let acelleration = .05
 
 // Creamos una función que se encargará de calcular el scroll suave
 const smoothScroll = () => {
@@ -82,8 +82,13 @@ window.addEventListener('touchmove', onTouchMove);
 
 // A partir de aquí es código que hice yo otra vez
 
+
+// 
+const heroTitle = document.querySelector('.Hero-logo')
+
 // Seleccionamos el elemento ".mouse"
 const followMouse = document.querySelector('.mouse')
+
 // Agregamos un evento de mousemove al documento para que el elemento ".mouse" siga el movimiento del cursor
 window.addEventListener('mousemove', (e) => {
 
@@ -111,7 +116,6 @@ hoverItems.forEach(item => {
     item.addEventListener('mouseleave', handleMouseLeave)
 })
 
-
 // Selecionamos los elementos '.Button', '.Button-toggler' y '.Button-line'
 
 const menuButton = document.querySelector('.Button')
@@ -121,37 +125,4 @@ menuToggler.addEventListener('click', () => {
     menuButton.classList.toggle('isActive')
 })
 
-// Seleccionamos los elementos con el atribbuto data-anim
-
-const showInItems = document.querySelectorAll('[data-anim]')
-
-// Definimos una función que se encargará de añadir la clase 'inView' cuando entren a la vista
-
-const handleIntersection = (entries) => {
-    console.log(entries)
-
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('inView')
-        }
-    })
-}
-
-// Definimos un objeto con las opciones que le pasaremos al IntersectionObserver
-
-let options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5,
-}
-
-// Creamos una instancia de IntersectionObserver con la función handleIntersection como callback
-
-const observer = new IntersectionObserver(handleIntersection, options)
-
-// Añadimos los elementos que queremos observar a la instancia de IntersectionObserver
-
-showInItems.forEach(item => {
-    observer.observe(item)
-})
 
