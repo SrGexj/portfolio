@@ -227,7 +227,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
-html {
+html, body {
   color: #fafafa;
   cursor: none;
 }
@@ -318,7 +318,6 @@ html {
 
 .Hero {
   position: relative;
-  overflow: hidden;
   color: var(--negro);
 }
 .Hero::before {
@@ -395,13 +394,13 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 99%;
   z-index: -1;
 }
 .Hero-background::before {
   content: "";
   background: radial-gradient(closest-side, var(--backgroundAl), var(--background) 75%);
   z-index: 1;
+  top: 0;
   position: absolute;
   width: 100%;
   height: 100%;

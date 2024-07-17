@@ -1,6 +1,6 @@
 // Seleccionamos los elementos con el atribbuto data-anim
 const showInItems = document.querySelectorAll('[data-anim]')
-const itemDelay = document.querySelectorAll('[data-delay]')
+33
 
 const animateSingleElements = () => {
 
@@ -19,7 +19,7 @@ const animateSingleElements = () => {
     let options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5,
+        threshold: 0.2,
     }
 
     // Creamos una instancia de IntersectionObserver con la función handleIntersection como callback
@@ -68,7 +68,7 @@ const animateChildElements = () => {
             let options = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // Ajustado para detectar intersección más fácilmente
+                threshold: 0.3
             }
 
             // Creamos una la instancia de IntersectionObserver con la función handleIntersection como callback
