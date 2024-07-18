@@ -83,9 +83,6 @@ window.addEventListener('touchmove', onTouchMove);
 // A partir de aquí es código que hice yo otra vez
 
 
-// 
-const heroTitle = document.querySelector('.Hero-logo')
-
 // Seleccionamos el elemento ".mouse"
 const followMouse = document.querySelector('.mouse')
 
@@ -126,3 +123,44 @@ menuToggler.addEventListener('click', () => {
 })
 
 
+/* SLIDER DE IMÁGENES */
+
+// Seleccionamos los elementos '.Slider', '.Slider-wrapper' y '.Slider-item'
+const slider = document.querySelector('.Slider')
+const sliderWrapper = slider.querySelector('.Slider-wrapper')
+const sliderItems = slider.querySelectorAll('.Slider-item')
+const controlButtons = document.querySelectorAll('.Projects-button')
+
+sliderWrapper.style.width = `${sliderItems.length * 100}%`
+
+let currentSlide = 0
+
+const handleNextSlide = () => {
+    currentSlide++
+    console.log(currentSlide)
+    sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
+
+   currentSlide > sliderItems.length - 3 ? sliderWrapper.style.transform = `translateX(0px)` : ''
+
+   currentSlide > sliderItems.length - 3 ? currentSlide = 0 : ''
+
+    console.log(currentSlide)
+}
+const handlePrevSlide = () => {
+    currentSlide--
+    sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
+
+    currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-520 * (sliderItems.length - 3)}px)` : ''
+
+    currentSlide < 0 ? currentSlide = sliderItems.length - 3 : ''
+
+    console.log(currentSlide)
+}
+
+controlButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+        button.classList.contains('Projects-button--next') ? handleNextSlide() : handlePrevSlide()
+
+    })
+})

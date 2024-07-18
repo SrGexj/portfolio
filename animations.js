@@ -6,7 +6,6 @@ const animateSingleElements = () => {
 
     // Definimos una función que se encargará de añadir la clase 'inView' cuando entren a la vista
     const handleIntersection = (entries) => {
-        console.log(entries)
 
         entries.forEach(entry => {
             if (entry.isIntersecting) {
