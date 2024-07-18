@@ -125,42 +125,64 @@ menuToggler.addEventListener('click', () => {
 
 /* SLIDER DE IMÁGENES */
 
-// Seleccionamos los elementos '.Slider', '.Slider-wrapper' y '.Slider-item'
+// Seleccionamos los elementos '.Slider', '.Slider-wrapper', '.Slider-item' y los botones '.Projects-button'
 const slider = document.querySelector('.Slider')
 const sliderWrapper = slider.querySelector('.Slider-wrapper')
 const sliderItems = slider.querySelectorAll('.Slider-item')
 const controlButtons = document.querySelectorAll('.Projects-button')
+const widthRef = document.querySelector('.reference')
 
-sliderWrapper.style.width = `${sliderItems.length * 100}%`
+let itemWidth
 
-let currentSlide = 0
+const handleResize = () =>{
 
-const handleNextSlide = () => {
-    currentSlide++
-    console.log(currentSlide)
-    sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
+    let currentSlide = 0
+    let shownSlides = 3
 
-   currentSlide > sliderItems.length - 3 ? sliderWrapper.style.transform = `translateX(0px)` : ''
+    setTimeout(()=>{
+        itemWidth = widthRef.getBoundingClientRect().width;
+        console.log(itemWidth)
+    },1)
 
-   currentSlide > sliderItems.length - 3 ? currentSlide = 0 : ''
 
-    console.log(currentSlide)
-}
-const handlePrevSlide = () => {
-    currentSlide--
-    sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
+    
+    
+    window.innerWidth <= 767 ? shownSlides = 1 : ''
 
-    currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-520 * (sliderItems.length - 3)}px)` : ''
+    sliderWrapper.style.width = `${sliderItems.length * 100}%`
+    sliderWrapper.style.gridTemplateColumns = `repeat(calc(${sliderItems.length} * ${shownSlides}), 1fr)`
 
-    currentSlide < 0 ? currentSlide = sliderItems.length - 3 : ''
+    const handleNextSlide = () => {
+        currentSlide++
+        console.log(currentSlide)
+        sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
 
-    console.log(currentSlide)
-}
+    currentSlide > sliderItems.length - shownSlides ? sliderWrapper.style.transform = `translateX(0px)` : ''
 
-controlButtons.forEach(button => {
+    currentSlide > sliderItems.length - shownSlides ? currentSlide = 0 : ''
 
-    button.addEventListener('click', () => {
-        button.classList.contains('Projects-button--next') ? handleNextSlide() : handlePrevSlide()
+        console.log(currentSlide)
+    }
+    const handlePrevSlide = () => {
+        currentSlide--
+        sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
 
+        currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-520 * (sliderItems.length - shownSlides)}px)` : ''
+
+        currentSlide < 0 ? currentSlide = sliderItems.length - shownSlides : ''
+
+        console.log(currentSlide)
+    }
+
+    controlButtons.forEach(button => {
+
+        button.addEventListener('click', () => {
+            button.classList.contains('Projects-button--next') ? handleNextSlide() : handlePrevSlide()
+
+        })
     })
-})
+}
+
+handleResize()
+
+addEventListener("resize", handleResize)

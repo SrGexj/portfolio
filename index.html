@@ -20,10 +20,10 @@
 
   <!-- Empieza el header -->
   <header class="Header" data-anim="show-out">
-    <h1 class="Header-logo">
+    <h1 class="Header-logo" data-hover>
       <a href="index.html" class="Header-link">juano</a>
     </h1>
-    <div class="Header-button Button">
+    <div class="Header-button Button" data-hover>
       <button class="Button-toggler">
         <span class="Button-line Button-line--one isActive"></span>
         <span class="Button-line Button-line--two isActive"></span>
@@ -125,7 +125,7 @@
         <!-- Título y descripción -->
         <section class="Experience-texts">
           <!-- Título experiencia -->
-          <h2 class="Experience-title">Experiencia <span class="text-bolder">Laboral</span></h2>
+          <h2 class="Content-title Experience-title">Experiencia <span class="text-bolder">Laboral</span></h2>
           <!-- Descripción experiencia -->
           <p class="Experience-description">
             Desde diciembre de 2021, he trabajado en Bittacora, una empresa dedicada al diseño, desarrollo y marketing.
@@ -340,18 +340,20 @@
     <!-- Comienzan proyectos -->
     <div class="Content-section Projects">
       <div class="Projects-content">
-        <h2 class="Projects-title">Proyectos <span class="text-bolder">Destacados</span></h2>
+        <h2 class="Content-title Projects-title">Proyectos <span class="text-bolder">Destacados</span></h2>
         <!-- Botones de control del slider  -->
-        <div class="Projects-control">
-          <button class="Projects-button Projects-button--prev"></button>
-          <button class="Projects-button Projects-button--next"></button>
+        <div class="Projects-control" >
+          <!-- Botón anterior -->
+          <button class="Projects-button Projects-button--prev" data-hover></button>
+          <!-- Botón siguiente -->
+          <button class="Projects-button Projects-button--next" data-hover></button>
         </div>
         <!-- Slider -->
         <div class="Projects-slider Slider">
           <div class="Slider-wrapper">
             <!-- Primer proyecto -->
-            <article class="Slider-item">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+            <article class="Slider-item reference">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -361,7 +363,7 @@
             </article>
             <!-- Segundo proyecto -->
             <article class="Slider-item Slider-item--reverse">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -371,7 +373,7 @@
             </article>
             <!-- Tercer proyecto -->
             <article class="Slider-item">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -381,7 +383,7 @@
             </article>
             <!-- Cuarto proyecto -->
             <article class="Slider-item Slider-item--reverse">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -391,7 +393,7 @@
             </article>
             <!-- Quinto proyecto -->
             <article class="Slider-item">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -401,20 +403,18 @@
             </article>
             <!-- Sexto proyecto -->
             <article class="Slider-item Slider-item--reverse">
-              <img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img">
+              <a href="" class="Slider-link"><img src="https://placehold.co/600x400/EEE/31343C" alt="" class="Slider-img"></a>
               <div class="Slider-info">
                 <h3 class="Slider-title">Top Candy</h3>
                 <p class="Slider-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
                   viverra maecenas accumsan lacus vel facilisis. </p>
               </div>
-            </article>            
+            </article>     
           </div>
         </div>
       </div>
     </div>
-
-
   </main>
   <!-- Fin de contenido principal -->
 
