@@ -125,64 +125,62 @@ menuToggler.addEventListener('click', () => {
 
 /* SLIDER DE IMÁGENES */
 
-// Seleccionamos los elementos '.Slider', '.Slider-wrapper', '.Slider-item' y los botones '.Projects-button'
+// Seleccionamos los elementos necesarios
 const slider = document.querySelector('.Slider')
 const sliderWrapper = slider.querySelector('.Slider-wrapper')
 const sliderItems = slider.querySelectorAll('.Slider-item')
 const controlButtons = document.querySelectorAll('.Projects-button')
-const widthRef = document.querySelector('.reference')
+const widthRef = document.querySelector('.reference');
 
-let itemWidth
-
+// Creamos una función que se encargará de redimensionar el slider según el ancho de la ventana y el número de elementos a mostrar
 const handleResize = () =>{
 
+    // Definimos un número por defecto para los slides 
     let currentSlide = 0
     let shownSlides = 3
-
-    setTimeout(()=>{
-        itemWidth = widthRef.getBoundingClientRect().width;
-        console.log(itemWidth)
-    },1)
-
-
     
-    
-    window.innerWidth <= 767 ? shownSlides = 1 : ''
+    // Manejador para mostrar solo uno en movil (responsive)
+    window.innerWidth <= 767 ? shownSlides = 1 : window.innerWidth <= 1024 ? shownSlides = 2 : ''
 
+
+    // Definimos el ancho del slider y el número de columnas en el grid basado en las variables anteriores
     sliderWrapper.style.width = `${sliderItems.length * 100}%`
     sliderWrapper.style.gridTemplateColumns = `repeat(calc(${sliderItems.length} * ${shownSlides}), 1fr)`
 
+    // Guardamos en una variable el ancho de un elemento del slider para poder ajustarlo correctamente
+    let itemWidth = widthRef.getBoundingClientRect().width;
+
+    // Definimos el manejador para desplazar el slider según el botón que se presione
+
+    // Manejador para el botón siguiente
     const handleNextSlide = () => {
         currentSlide++
-        console.log(currentSlide)
-        sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
+        // Desplazamos el slider según el slide actual y el ancho de los elementos
+        sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * currentSlide}px)`
+        // Comparamos si el slide actual es mayor que el número de slides menos los que se muestran, si es así, volvemos al principio
+        currentSlide > sliderItems.length - shownSlides ? sliderWrapper.style.transform = `translateX(0px)` : ''
+        // Si hemos llegado al final, volvemos a definir el valor como 0
+        currentSlide > sliderItems.length - shownSlides ? currentSlide = 0 : ''
 
-    currentSlide > sliderItems.length - shownSlides ? sliderWrapper.style.transform = `translateX(0px)` : ''
-
-    currentSlide > sliderItems.length - shownSlides ? currentSlide = 0 : ''
-
-        console.log(currentSlide)
     }
+    // Manejador para el botón anterior aplicando la misma lógica que en el caso anterior pero al contrario
     const handlePrevSlide = () => {
         currentSlide--
-        sliderWrapper.style.transform = `translateX(${-520 * currentSlide}px)`
-
-        currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-520 * (sliderItems.length - shownSlides)}px)` : ''
-
+        sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * currentSlide}px)`
+        currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * (sliderItems.length - shownSlides)}px)` : ''
         currentSlide < 0 ? currentSlide = sliderItems.length - shownSlides : ''
 
-        console.log(currentSlide)
     }
-
+    // Añadimos los manejadores a los botones
     controlButtons.forEach(button => {
-
         button.addEventListener('click', () => {
             button.classList.contains('Projects-button--next') ? handleNextSlide() : handlePrevSlide()
-
         })
     })
 }
 
+// Llamamos a la función handleResize para que se ejecute al cargar la página
 handleResize()
 
+// Añadimos un evento de redimensionamiento a la ventana para que se ejecute la función handleResize cada vez que se redimensione la ventana
 addEventListener("resize", handleResize)
