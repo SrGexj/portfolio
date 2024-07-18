@@ -1,6 +1,6 @@
 // Seleccionamos los elementos con el atribbuto data-anim
-const showInItems = document.querySelectorAll('[data-anim]')
-33
+const animItems = document.querySelectorAll('[data-anim]')
+const delay = document.querySelectorAll('[data-delay]')
 
 const animateSingleElements = () => {
 
@@ -25,7 +25,7 @@ const animateSingleElements = () => {
     const observer = new IntersectionObserver(handleIntersection, options)
 
     // Añadimos los elementos que queremos observar a la instancia de IntersectionObserver
-    showInItems.forEach(item => {
+    animItems.forEach(item => {
         observer.observe(item)
     })
 }
