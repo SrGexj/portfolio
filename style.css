@@ -9,6 +9,7 @@
   --borders: #ffffff40;
   --shadows: #ffffff20;
   --primary: #00ff7e;
+  --text: #a4a1a1;
   /* Tipografía */
   --tipo-principal: "Montserrat", Helvetica, Arial, sans-serif;
   --tipo-secundaria: Verdana;
@@ -395,11 +396,12 @@ html, body {
 .Hero-subtle {
   text-transform: uppercase;
   font-size: 20px;
-  font-family: "Montserrat";
+  font-family: var(--tipo-principal);
   letter-spacing: 5px;
   font-weight: 400;
 }
 .Hero-description {
+  color: var();
   font-size: 18px;
   text-align: center;
   max-width: 600px;
@@ -724,6 +726,46 @@ html, body {
   .Slider-description {
     font-size: 20px;
   }
+}
+
+.About {
+  width: 100%;
+  padding: 40px 20px 150px;
+}
+.About-content {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  gap: 50px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.About-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.About-description {
+  font-size: 18px;
+  max-width: 750px;
+  word-break: auto-phrase;
+  color: var(--text);
+}
+.About-more {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  border: solid 1px var(--primary);
+  padding: 15px 75px;
+  transition: all 0.5s;
+}
+.About-more:hover {
+  filter: drop-shadow(0 0 5px var(--primary));
+}
+.About-imgWrapper {
+  width: 50%;
+  border: solid 1px;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .text-bolder {
