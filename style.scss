@@ -78,30 +78,33 @@ html, body{
     }
   }
 }
-.Content {
+.ScrollContent {
     height: 100vh;
+}
+
+.Content{
+  &-section{
+    width: 100%;
+  }
+  &-title{
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 300;
+    word-break: auto-phrase;
+  }
+  @media(max-width:767px){
     &-section{
-      width: 100%;
+      height: auto;
     }
     &-title{
-      font-size: 45px;
-      text-transform: uppercase;
-      font-weight: 300;
-      word-break: auto-phrase;
+      font-size: 30px;
     }
-    @media(max-width:767px){
-      &-section{
-        height: auto;
-      }
-      &-title{
-        font-size: 30px;
-      }
-    }
+  }
 }
 
 .Hero{
   position: relative;
-  height: 100%;
+  height: 100vh;
   color: var(--negro);
   &::before{
     content: "";
@@ -373,6 +376,41 @@ html, body{
         filter: drop-shadow(0 0 5px #21759b);
       }
     }
+    &--psd{
+      &:hover{
+        opacity: 1;
+        color : #31a8ff;
+        filter: drop-shadow(0 0 5px #31a8ff);
+      }
+    }
+    &--ai{
+      &:hover{
+        opacity: 1;
+        color : #ff9a00;
+        filter: drop-shadow(0 0 5px #ff9a00);
+      }
+    }
+    &--ae{
+      &:hover{
+        opacity: 1;
+        color : #d291ff;
+        filter: drop-shadow(0 0 5px #d291ff);
+      }
+    }
+    &--pr{
+      &:hover{
+        opacity: 1;
+        color : #31a8ff;
+        filter: drop-shadow(0 0 5px #31a8ff);
+      }
+    }
+    &--fig{
+      &:hover{
+        opacity: 1;
+        color : #f24e1e;
+        filter: drop-shadow(0 0 5px #f24e1e);
+      }
+    }
   }
   @media (max-width:1024px) {
     &-content{
@@ -429,12 +467,26 @@ html, body{
   &-button{
     width: 50px;
     height: 40px;
-    padding: 10px 20px;
     border: solid 1px var(--primary);
     border-radius: 10px;
     transition: all .25s;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover{
       filter: drop-shadow(0 0 5px var(--primary));
+    }
+  }
+  &-icon{
+    width: 25px;
+    height: 25px;
+    // esto lo hago porque al ser un triangulo visualmente no se ve centrado a pesar de estarlo
+    &--prev{
+      transform: translate(-2px);
+    }
+    &--next{
+      transform: translate(2px);
     }
   }
   @media (max-width:767px) {
@@ -504,7 +556,7 @@ html, body{
 
 .About{
   width: 100%;
-  padding: 40px 20px 150px;
+  padding: 100px 20px 150px;
   &-content{
     display: flex;
     flex-flow: row-reverse nowrap;
@@ -539,7 +591,64 @@ html, body{
     border-radius: 30px;
     overflow: hidden;
   }
+  @media (max-width:1077px) {
+    padding: 50px 20px;
+    &-content{
+      flex-direction: column-reverse;
+      gap: 50px;
+    }
+    &-imgWrapper {
+      width: 100%;
+    }
+  }
 }
+
+.Footer{
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  &-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  &-title{
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  &-description{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  &-content{
+    display: flex;flex-direction: column;
+    gap: 40px;
+  }
+  &-link{
+    font-size: 20px;
+    width: fit-content;
+    border: solid 1px var(--primary);
+    border-radius: 20px;
+    transition: all .25s;
+    padding: 16px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      filter: drop-shadow(0 0 5px var(--primary));
+    }
+  }
+
+}
+
 
 .text-bolder{
   font-weight: 700;
