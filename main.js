@@ -80,8 +80,7 @@ const onTouchMove = (e) => {
 window.addEventListener('touchstart', onTouchStart);
 window.addEventListener('touchmove', onTouchMove);
 
-// A partir de aquí es código que hice yo otra vez
-
+/* A partir de aquí es código que hice yo otra vez */
 
 // Seleccionamos el elemento ".mouse"
 const followMouse = document.querySelector('.mouse')
@@ -138,10 +137,11 @@ const handleResize = () =>{
     // Definimos un número por defecto para los slides 
     let currentSlide = 0
     let shownSlides = 3
+    let slidesGap = 50
     
     // Manejador para mostrar solo uno en movil (responsive)
     window.innerWidth <= 767 ? shownSlides = 1 : window.innerWidth <= 1024 ? shownSlides = 2 : ''
-
+    window.innerWidth <= 767 ? slidesGap = 10 : ''
 
     // Definimos el ancho del slider y el número de columnas en el grid basado en las variables anteriores
     sliderWrapper.style.width = `${sliderItems.length * 100}%`
@@ -156,7 +156,7 @@ const handleResize = () =>{
     const handleNextSlide = () => {
         currentSlide++
         // Desplazamos el slider según el slide actual y el ancho de los elementos
-        sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * currentSlide}px)`
+        sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
         // Comparamos si el slide actual es mayor que el número de slides menos los que se muestran, si es así, volvemos al principio
         currentSlide > sliderItems.length - shownSlides ? sliderWrapper.style.transform = `translateX(0px)` : ''
         // Si hemos llegado al final, volvemos a definir el valor como 0
@@ -166,8 +166,8 @@ const handleResize = () =>{
     // Manejador para el botón anterior aplicando la misma lógica que en el caso anterior pero al contrario
     const handlePrevSlide = () => {
         currentSlide--
-        sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * currentSlide}px)`
-        currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-(itemWidth + 50) * (sliderItems.length - shownSlides)}px)` : ''
+        sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
+        currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * (sliderItems.length - shownSlides)}px)` : ''
         currentSlide < 0 ? currentSlide = sliderItems.length - shownSlides : ''
 
     }

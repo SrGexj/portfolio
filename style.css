@@ -299,7 +299,6 @@ html, body {
 .Button-line {
   width: 40px;
   height: 4px;
-  background: var(--negro);
   transition: transform 0.3s;
 }
 .Button.isActive .Button-line--one {
@@ -314,7 +313,6 @@ html, body {
 }
 .Content-section {
   width: 100%;
-  height: 100%;
 }
 .Content-title {
   font-size: 45px;
@@ -333,6 +331,7 @@ html, body {
 
 .Hero {
   position: relative;
+  height: 100%;
   color: var(--negro);
 }
 .Hero::before {
@@ -409,6 +408,7 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   z-index: -1;
 }
 .Hero-background::before {
@@ -438,8 +438,7 @@ html, body {
 }
 @media (max-width: 767px) {
   .Hero {
-    height: 750px;
-    padding: 0 20px;
+    padding: 0px 20px;
   }
   .Hero-content {
     transform: translateY(-40px);
@@ -449,6 +448,9 @@ html, body {
   }
   .Hero::before {
     opacity: 0.7;
+  }
+  .Hero-scrollIcon {
+    display: none;
   }
 }
 
@@ -478,7 +480,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 150px 20px;
 }
 .Experience-content {
   display: grid;
@@ -624,7 +626,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 20px;
+  padding: 150px 20px;
 }
 .Projects-content {
   position: relative;
@@ -639,6 +641,9 @@ html, body {
   right: 0;
   top: 1%;
 }
+.Projects-slider {
+  margin: 85px 0 0 0;
+}
 .Projects-button {
   width: 50px;
   height: 40px;
@@ -650,12 +655,26 @@ html, body {
 .Projects-button:hover {
   filter: drop-shadow(0 0 5px var(--primary));
 }
+@media (max-width: 767px) {
+  .Projects {
+    padding: 10px 10px;
+  }
+  .Projects-control {
+    margin-top: 25px;
+    position: static;
+  }
+  .Projects-slider {
+    margin: 30px 0 0 0;
+  }
+  .Projects-title {
+    font-size: 27px;
+  }
+}
 
 .Slider {
   width: 100%;
   position: relative;
   overflow: hidden;
-  margin: 85px 0 0 0;
 }
 .Slider-wrapper {
   width: 300%;
@@ -679,12 +698,12 @@ html, body {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 700;
-  word-break: auto-phrase;
+  word-break: keep-all;
   margin: 0 0 15px 0;
 }
 .Slider-description {
   font-size: 18px;
-  word-break: auto-phrase;
+  word-break: keep-all;
   color: var(--text);
 }
 .Slider-img {
@@ -693,6 +712,14 @@ html, body {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 20px;
+}
+@media (max-width: 767px) {
+  .Slider-wrapper {
+    gap: 10px;
+  }
+  .Slider-description {
+    font-size: 20px;
+  }
 }
 
 .text-bolder {

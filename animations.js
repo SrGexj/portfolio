@@ -1,6 +1,5 @@
 // Seleccionamos los elementos con el atribbuto data-anim
 const animItems = document.querySelectorAll('[data-anim]')
-const delay = document.querySelectorAll('[data-delay]')
 
 const animateSingleElements = () => {
 
