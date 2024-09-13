@@ -5,7 +5,7 @@
   --negro: #ececec;
   --blanco: #393939;
   --background: #1a1a1a;
-  --backgroundAl: #1a1a1ae6;
+  --backgroundAl: #1a1a1ace;
   --borders: #ffffff40;
   --shadows: #ffffff20;
   --primary: #00ff7e;
@@ -15,17 +15,6 @@
   --tipo-secundaria: Verdana;
 }
 
-/* (Opcional) Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --negro: #ececec;
-    --blanco: #393939;
-    --background: #1a1a1a;
-    --backgroundAl: #1a1a1ae6;
-    --borders: #ffffff40;
-    --shadows: #ffffff20;
-  }
-}
 /* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -271,7 +260,7 @@ html, body {
   width: 100%;
   padding: 30px 65px;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
 }
@@ -333,6 +322,10 @@ html, body {
   .Content-title {
     font-size: 30px;
   }
+}
+
+.text-bolder {
+  font-weight: 700;
 }
 
 .Hero {
@@ -426,6 +419,7 @@ html, body {
   position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 0.89;
 }
 .Hero-scrollIcon {
   bottom: 50px;
@@ -864,8 +858,4 @@ html, body {
 }
 .Footer-link:hover {
   filter: drop-shadow(0 0 5px var(--primary));
-}
-
-.text-bolder {
-  font-weight: 700;
 }/*# sourceMappingURL=style.css.map */

@@ -4,7 +4,7 @@
   --negro         : #ececec;
   --blanco        : #393939;
   --background    : #1a1a1a;
-  --backgroundAl  : #1a1a1ae6;
+  --backgroundAl  : #1a1a1ace;
   --borders       : #ffffff40; 
   --shadows       : #ffffff20;
   --primary       : #00ff7e;
@@ -12,18 +12,6 @@
   /* Tipografía */
   --tipo-principal   :  'Montserrat', Helvetica, Arial, sans-serif;
   --tipo-secundaria  : Verdana;
-}
-  
-/* (Opcional) Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root{
-      --negro         : #ececec;
-      --blanco        : #393939;
-      --background    : #1a1a1a;
-      --backgroundAl  : #1a1a1ae6;
-      --borders       : #ffffff40; 
-      --shadows       : #ffffff20;
-  }
 }
 
 /* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
