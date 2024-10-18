@@ -62,12 +62,14 @@ const onTouchStart = (e) => {
 };
 
 const onTouchMove = (e) => {
+    e.preventDefault();
     currentTouchY = e.touches[0].clientY;
-    let delta = (startTouchY - currentTouchY) * 1.25;
+    let delta = (startTouchY - currentTouchY) * 0.75;
+
 
     targetPosition += delta;
     targetPosition = Math.max(0, targetPosition);
-    targetPosition = Math.min(mainContent.scrollHeight - windowValues.height, targetPosition);
+    targetPosition = Math.min(mainContent.scrollHeight - windowValues.height, targetPosition);    
 
     startTouchY = currentTouchY;
 
