@@ -29,7 +29,8 @@ const handleResize = () =>{
     // Definimos el manejador para desplazar el slider según el botón que se presione
 
     // Manejador para el botón siguiente
-    const handleNextSlide = () => {
+    const handleNextSlide = (e) => {
+        e.preventDefault()
         currentSlide++
         // Desplazamos el slider según el slide actual y el ancho de los elementos
         sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
@@ -40,7 +41,8 @@ const handleResize = () =>{
 
     }
     // Manejador para el botón anterior aplicando la misma lógica que en el caso anterior pero al contrario
-    const handlePrevSlide = () => {
+    const handlePrevSlide = (e) => {
+        e.preventDefault()
         currentSlide--
         sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
         currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * (sliderItems.length - shownSlides)}px)` : ''
