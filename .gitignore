@@ -406,6 +406,7 @@ dev/
 api-authors-books/
 bttcr/
 vendor/
+qrgen/
 qrgen/.htaccess
 qrgen/default.php
 qrgen/index.html
