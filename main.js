@@ -1,3 +1,11 @@
+// arreglo 100vh móviles con dock 
+// https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 /* SLIDER DE IMÁGENES */
 
 // Seleccionamos los elementos necesarios
@@ -29,7 +37,8 @@ const handleResize = () =>{
     // Definimos el manejador para desplazar el slider según el botón que se presione
 
     // Manejador para el botón siguiente
-    const handleNextSlide = () => {
+    const handleNextSlide = (e) => {
+     
         currentSlide++
         // Desplazamos el slider según el slide actual y el ancho de los elementos
         sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
@@ -40,7 +49,8 @@ const handleResize = () =>{
 
     }
     // Manejador para el botón anterior aplicando la misma lógica que en el caso anterior pero al contrario
-    const handlePrevSlide = () => {
+    const handlePrevSlide = (e) => {
+       
         currentSlide--
         sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * currentSlide}px)`
         currentSlide < 0 ? sliderWrapper.style.transform = `translateX(${-(itemWidth + slidesGap) * (sliderItems.length - shownSlides)}px)` : ''

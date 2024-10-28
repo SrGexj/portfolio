@@ -396,3 +396,20 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Añadir las carpetas específicas
+olderold/
+topcandy/
+practica/
+cimated/
+dev/
+api-authors-books/
+bttcr/
+vendor/
+qrgen/
+qrgen/.htaccess
+qrgen/default.php
+qrgen/index.html
+qrgen/style.css
+qrgen/style.css.map
+qrgen/style.scss
