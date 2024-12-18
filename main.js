@@ -1,19 +1,43 @@
 // arreglo 100vh móviles con dock 
 // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-let vh = window.innerHeight * 0.01;
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-/* SLIDER DE IMÁGENES */
+// Seleccionamos el elemento ".mouse"
+const followMouse = document.querySelector('.mouse')
+
+// Agregamos un evento de mousemove al documento para que el elemento ".mouse" siga el movimiento del cursor
+window.addEventListener('mousemove', (e) => {
+
+    const x = e.clientX
+    const y = e.clientY
+
+    followMouse.style.transform = `translate(${x}px, ${y}px)`
+})
+
+// Seleccionamos todos los elementos que tengan el atributo "data-hover"
+const hoverItems = document.querySelectorAll('[data-hover]')
+
+// Definimos dos funciones para añadir posteriormente a los eventos mouseenter y mouseleave
+const handleMouseEnter = () => {
+    followMouse.classList.add('active')
+}
+
+const handleMouseLeave = () => {
+    followMouse.classList.remove('active')
+}
+
+// Añadimos los handlers para los eventos mouseenter y mouseleave
+hoverItems.forEach(item => {
+    item.addEventListener('mouseenter', handleMouseEnter)
+    item.addEventListener('mouseleave', handleMouseLeave)
+})
+
+/* SLIDER */
 
 // Seleccionamos los elementos necesarios
 const slider = document.querySelector('.Slider')
-    if (slider){
-        const sliderWrapper = slider.querySelector('.Slider-wrapper')
-        const sliderItems = slider.querySelectorAll('.Slider-item')
-    }
+const sliderWrapper = slider.querySelector('.Slider-wrapper')
+const sliderItems = slider.querySelectorAll('.Slider-item')
 const controlButtons = document.querySelectorAll('.Projects-button')
 const widthRef = document.querySelector('.reference');
 
@@ -94,7 +118,7 @@ const acceptCookiesButton = document.getElementById('acceptCookies');
 
 // Verificar si el usuario ya ha aceptado las cookies
 if (!localStorage.getItem('cookiesAccepted')) {
-  cookieBanner.style.display = 'block';
+  cookieBanner.style.display = 'flex';
 }
 
 // Manejar la aceptación de cookies

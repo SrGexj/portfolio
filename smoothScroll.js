@@ -82,34 +82,3 @@ const onTouchMove = (e) => {
 window.addEventListener('touchstart', onTouchStart);
 window.addEventListener('touchmove', onTouchMove);
 
-/* A partir de aquí es código que hice yo otra vez */
-
-// Seleccionamos el elemento ".mouse"
-const followMouse = document.querySelector('.mouse')
-
-// Agregamos un evento de mousemove al documento para que el elemento ".mouse" siga el movimiento del cursor
-window.addEventListener('mousemove', (e) => {
-
-    const x = e.clientX
-    const y = e.clientY
-
-    followMouse.style.transform = `translate(${x}px, ${y}px)`
-})
-
-// Seleccionamos todos los elementos que tengan el atributo "data-hover"
-const hoverItems = document.querySelectorAll('[data-hover]')
-
-// Definimos dos funciones para añadir posteriormente a los eventos mouseenter y mouseleave
-const handleMouseEnter = () => {
-    followMouse.classList.add('active')
-}
-
-const handleMouseLeave = () => {
-    followMouse.classList.remove('active')
-}
-
-// Añadimos los handlers para los eventos mouseenter y mouseleave
-hoverItems.forEach(item => {
-    item.addEventListener('mouseenter', handleMouseEnter)
-    item.addEventListener('mouseleave', handleMouseLeave)
-})

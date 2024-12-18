@@ -235,7 +235,7 @@ html, body {
   background: rgba(255, 255, 255, 0.1882352941);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
-  z-index: 3;
+  z-index: 999;
   pointer-events: none;
   left: -10px;
   mix-blend-mode: difference;
@@ -339,6 +339,7 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  z-index: 2;
 }
 .Cookies-link {
   width: -moz-fit-content;
@@ -902,7 +903,9 @@ html, body {
   color: var(--negro);
 }
 .CookiesPolicy-header {
-  height: 50vh;
+    position: relative;
+    min-height: calc(var(--vh, 1vh) * 100);
+    color: var(--negro);
 }
 .CookiesPolicy-header-title {
   font-family: "Brutalworld";
