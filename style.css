@@ -355,12 +355,12 @@ html, body {
   filter: drop-shadow(0 0 5px var(--primary));
 }
 
-.Hero {
+.Hero, .CookiesPolicy-header {
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
   color: var(--negro);
 }
-.Hero::before {
+.Hero::before, .CookiesPolicy-header::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -465,7 +465,7 @@ html, body {
   width: 25px;
 }
 @media (max-width: 767px) {
-  .Hero {
+  .Hero, .CookiesPolicy-header {
     padding: 0px 20px;
   }
   .Hero-content {
@@ -474,7 +474,7 @@ html, body {
   .Hero-background video {
     height: 100%;
   }
-  .Hero::before {
+  .Hero::before, .CookiesPolicy-header::before {
     opacity: 0.7;
   }
   .Hero-scrollIcon {
@@ -510,7 +510,7 @@ html, body {
   align-items: center;
   padding: 150px 20px;
 }
-.Experience-content {
+.Experience-content, .CookiesPolicy-content {
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
@@ -644,7 +644,7 @@ html, body {
   filter: drop-shadow(0 0 5px #f24e1e);
 }
 @media (max-width: 1024px) {
-  .Experience-content {
+  .Experience-content, .CookiesPolicy-content {
     grid-template-columns: 1fr;
     max-width: 1800px;
   }
@@ -662,7 +662,7 @@ html, body {
     align-items: flex-start;
     padding: 50px 10px;
   }
-  .Experience-content {
+  .Experience-content, .CookiesPolicy-content {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
@@ -885,4 +885,66 @@ html, body {
 }
 .Footer-link:hover {
   filter: drop-shadow(0 0 5px var(--primary));
+}
+
+.CookiesPolicy {
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100);
+  color: var(--negro);
+}
+.CookiesPolicy-header {
+  height: 50vh;
+}
+.CookiesPolicy-header-title {
+  font-family: "Brutalworld";
+  font-size: 60px;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.CookiesPolicy-header-title::after {
+  content: "Política de Cookies";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--primary);
+  filter: blur(3px);
+  z-index: -1;
+}
+.CookiesPolicy-content {
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.CookiesPolicy-content-section {
+  background: linear-gradient(149deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 0 7px var(--shadows);
+  border: 1px solid var(--borders);
+}
+.CookiesPolicy-content-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+.CookiesPolicy-content-section-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.CookiesPolicy-content-section ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+.CookiesPolicy-content-section ul li {
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 10px;
 }/*# sourceMappingURL=style.css.map */

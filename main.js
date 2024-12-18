@@ -87,12 +87,18 @@ addEventListener("resize", handleResize)
 
 // })
 
-const cookieBanner = document.querySelector('.Cookies')
-const cookieButton = cookieBanner.querySelector('.Cookies-button')
+const cookieBanner = document.getElementById('cookieBanner');
+const acceptCookiesButton = document.getElementById('acceptCookies');
 
-cookieButton.addEventListener('click', () => {
-    cookieBanner.style.display = 'none'
-})
-setTimeout(() => {
-    cookieBanner.style.display = 'none'
-}, 5000)
+// Verificar si el usuario ya ha aceptado las cookies
+if (!localStorage.getItem('cookiesAccepted')) {
+  cookieBanner.style.display = 'block';
+}
+
+// Manejar la aceptación de cookies
+acceptCookiesButton.addEventListener('click', function () {
+  localStorage.setItem('cookiesAccepted', 'true');
+  cookieBanner.style.display = 'none';
+  // Aquí puedes inicializar las cookies de métricas, por ejemplo:
+  // iniciarGoogleAnalytics();
+});
