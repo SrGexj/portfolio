@@ -328,6 +328,33 @@ html, body {
   font-weight: 700;
 }
 
+.Cookies {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Cookies-button {
+  width: 50px;
+  height: 40px;
+  border: solid 1px var(--primary);
+  border-radius: 10px;
+  transition: all 0.25s;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Cookies-button:hover {
+  filter: drop-shadow(0 0 5px var(--primary));
+}
+
 .Hero {
   position: relative;
   height: calc(var(--vh, 1vh) * 100);

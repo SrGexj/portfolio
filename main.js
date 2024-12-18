@@ -86,3 +86,13 @@ addEventListener("resize", handleResize)
 //     itemsToOpen.forEach(item => { item.classList.toggle('isActive') })
 
 // })
+
+const cookieBanner = document.querySelector('.Cookies')
+const cookieButton = cookieBanner.querySelector('.Cookies-button')
+
+cookieButton.addEventListener('click', () => {
+    cookieBanner.style.display = 'none'
+})
+setTimeout(() => {
+    cookieBanner.style.display = 'none'
+}, 5000)
