@@ -10,8 +10,10 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 // Seleccionamos los elementos necesarios
 const slider = document.querySelector('.Slider')
-const sliderWrapper = slider.querySelector('.Slider-wrapper')
-const sliderItems = slider.querySelectorAll('.Slider-item')
+    if (slider){
+        const sliderWrapper = slider.querySelector('.Slider-wrapper')
+        const sliderItems = slider.querySelectorAll('.Slider-item')
+    }
 const controlButtons = document.querySelectorAll('.Projects-button')
 const widthRef = document.querySelector('.reference');
 
