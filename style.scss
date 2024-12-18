@@ -14,6 +14,14 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  &-link{
+    width: fit-content;
+    transition: all .25s;
+    color: var(--primary);
+    &:hover{
+      filter: drop-shadow(0 0 5px var(--primary));
+    }
+  }
   &-button{
     width: 50px;
     height: 40px;

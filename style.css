@@ -340,6 +340,15 @@ html, body {
   align-items: center;
   gap: 20px;
 }
+.Cookies-link {
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.25s;
+  color: var(--primary);
+}
+.Cookies-link:hover {
+  filter: drop-shadow(0 0 5px var(--primary));
+}
 .Cookies-button {
   width: 50px;
   height: 40px;
