@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Comparativa auditada de material de snowboard para un rider de 66,5 kg. Precios, enlaces, estado y condiciones de compra con un presupuesto de 500 euros.">
+  <title>Snow Compras — Comparativa de equipo</title>
+<style>button,input,select { font:inherit; }
+button { cursor:pointer; }
+button,input,select { border-radius:0; }
+[hidden] { display:none!important; }
+.catalog { padding-top:36px; }
+.catalog-heading { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:24px; }
+.catalog-heading h2 { font-size:36px; }
+.view-switch { display:flex; border:1px solid var(--ink); }
+.view-switch button { border:0; padding:11px 19px; background:transparent; min-height:44px; font-size:14px; font-weight:700; }
+.view-switch button[aria-pressed="true"] { background:var(--ink); color:white; }
+#filters { display:grid; grid-template-columns:1.5fr repeat(5,1fr); gap:14px; padding:22px; background:#e9ece4; border:1px solid var(--line); }
+#filters label { display:block; font-size:14px; font-weight:700; margin-bottom:7px; }
+#filters input,#filters select { min-height:46px; width:100%; min-width:0; border:1px solid #7a8278; background:white; color:var(--ink); padding:9px 11px; font-size:14px; }
+.catalog-results { display:flex; justify-content:space-between; align-items:center; gap:16px; margin:18px 0 4px; }
+#result-count { font-size:15px; font-weight:700; margin:0; }
+#reset-filters { background:transparent; border:0; padding:10px 0 10px 10px; min-height:44px; text-decoration:underline; text-underline-offset:4px; font-size:14px; }
+.catalog-help,.photo-note { color:var(--muted); font-size:14px; margin:0 0 22px; }
+.photo-note { margin:20px 0 0; }
+.product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.product-card { border:1px solid var(--line); background:white; display:flex; flex-direction:column; min-width:0; }
+.card-media { position:relative; background:#e9ece5; border-bottom:1px solid var(--line); }
+.image-open { width:100%; height:310px; background:transparent; border:0; display:block; padding:16px; position:relative; }
+.image-open img { width:100%; height:100%; object-fit:contain; display:block; }
+.image-open:hover { background:#e2e6dd; }
+.zoom-label { position:absolute; right:12px; bottom:12px; background:white; border:1px solid var(--line); padding:8px 12px; font-size:14px; }
+.media-type { position:absolute; top:12px; left:12px; z-index:1; background:white; padding:8px 12px; font-size:14px; border:1px solid var(--line); pointer-events:none; }
+.card-gallery-controls { display:flex; align-items:center; justify-content:space-between; padding:0 12px 10px; }
+.card-gallery-controls button { min-width:44px; min-height:44px; padding:8px 12px; border:1px solid #879180; background:white; font-size:22px; }
+.card-gallery-controls button:disabled { cursor:default; color:#687264; background:transparent; }
+.card-photo-count { font:14px "Courier New",monospace; color:var(--muted); margin:0; }
+.card-content { padding:22px; display:flex; flex-direction:column; flex:1; }
+.card-category { font-size:14px; font-weight:700; color:var(--muted); margin:0 0 8px; }
+.card-content h3 { margin:0 0 8px; font-size:24px; line-height:1.15; letter-spacing:-.7px; }
+.card-spec { color:var(--muted); font-size:14px; margin:0 0 18px; min-height:44px; }
+.card-pricing { display:flex; gap:14px; align-items:baseline; flex-wrap:wrap; margin-bottom:18px; }
+.card-pricing strong { font-size:28px; letter-spacing:-1px; }
+.card-pricing span { font-size:14px; color:var(--muted); }
+.card-verdict { display:flex; gap:10px; align-items:flex-start; padding-block:14px; border-block:1px solid var(--line); }
+.card-verdict .sub { font-size:14px; margin:0; }
+.card-audit { font-size:14px; margin-top:4px; }
+.card-audit summary { min-height:44px; }
+.audit-content { color:#383e37; padding:0 0 12px; }
+.audit-content p { margin:0 0 10px; }
+.audit-content .rationale { padding:12px; font-size:14px; margin-top:12px; }
+.card-action { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-top:auto; padding-top:20px; }
+.card-action a { background:var(--ink); color:white; text-decoration:none; padding:11px 15px; min-height:44px; font-size:14px; font-weight:700; }
+.card-action a:hover { background:#363e32; text-decoration:underline; }
+.card-action span { color:var(--muted); font-size:14px; }
+.empty-state { text-align:center; padding:54px 24px; border:1px dashed #7a8278; background:#edf0e8; }
+.empty-state h3 { font-size:24px; margin:0 0 12px; }
+.empty-state p { max-width:530px; margin:0 auto 20px; }
+.empty-state button { min-height:44px; border:0; background:var(--ink); color:white; padding:12px 20px; }
+body.is-catalog[data-view="grid"] .category { display:none; }
+body.is-catalog[data-view="table"] #products { display:none; }
+body.is-catalog .navigation a[aria-current="true"] { text-decoration:underline; text-decoration-thickness:2px; }
+dialog { width:min(1040px,calc(100% - 32px)); max-height:calc(100dvh - 32px); border:1px solid #6d7866; background:var(--paper); padding:24px; color:var(--ink); }
+dialog::backdrop { background:rgb(15 20 16 / .82); }
+.dialog-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.dialog-heading h2 { font-size:24px; }
+.dialog-heading button { min-height:44px; padding:8px 14px; border:1px solid #7a8278; background:white; font-size:14px; }
+.dialog-heading button span { font-size:20px; margin-left:10px; }
+#photo-source { font-size:14px; color:var(--muted); margin:8px 0 16px; }
+.dialog-image-frame { height: min(52dvh,540px); position:relative; background:#e6eae1; display:grid; place-items:center; padding:12px; }
+#dialog-image { width:100%; height:100%; min-height:0; object-fit:contain; }
+.image-error { position:absolute; inset:25%; text-align:center; display:grid; place-items:center; color:var(--ink); font-size:16px; }
+.card-media .image-error { inset:25% 12%; }
+.dialog-controls { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:12px; }
+.dialog-controls button { min-height:44px; padding:10px 16px; background:white; border:1px solid #7a8278; font-size:14px; }
+.dialog-controls button:disabled { color:var(--muted); }
+#photo-count { font-size:14px; margin:0; }
+.dialog-thumbnails { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+.dialog-thumbnails button { width:60px; height:66px; border:1px solid #7a8278; padding:3px; background:white; }
+.dialog-thumbnails button[aria-pressed="true"] { border:3px solid var(--ink); }
+.dialog-thumbnails img { width:100%; height:100%; object-fit:contain; }
+#photo-listing { display:inline-block; padding-block:8px; font-size:14px; }
+@media(max-width:1200px) { #filters { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:950px) { .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .image-open { height:290px; } }
+@media(max-width:650px) {
+  #filters { grid-template-columns:repeat(2,minmax(0,1fr)); padding:16px; gap:12px; }
+  #filters .filter-search { grid-column:1 / -1; }
+  #filters label { font-size:14px; }
+  .catalog-heading { align-items:start; flex-direction:column; gap:18px; }
+  .catalog-heading h2 { font-size:30px; }
+  .view-switch { align-self:flex-end; }
+  .product-grid { grid-template-columns:1fr; gap:20px; }
+  .image-open { height:310px; }
+  .card-content { padding:20px; }
+  .card-spec { min-height:0; }
+  dialog { padding:16px; }
+  .dialog-heading h2 { font-size:20px; }
+  .dialog-heading button { white-space:nowrap; }
+  .dialog-controls { gap:8px; }
+  .dialog-controls button { padding:10px; }
+  .navigation-inner { gap:4px 17px; }
+}
+@media print {
+  body.is-catalog .catalog,dialog { display:none!important; }
+  body.is-catalog[data-view="grid"] .category { display:block; }
+  .card-media { break-inside:avoid; }
+}
+</style>
+
+
+
+  <style>
+    :root { --paper:#f5f4ef; --white:#fff; --ink:#171918; --muted:#565b57; --line:#d2d5cd; --green:#20553c; --green-bg:#e4eee7; --amber:#70480c; --amber-bg:#fff0d7; --red:#852f2b; --red-bg:#f9e8e5; }
+    * { box-sizing:border-box; }
+    html { scroll-padding-top:92px; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.55 "Helvetica Neue",Helvetica,sans-serif; }
+    a { color:inherit; text-underline-offset:4px; text-decoration-thickness:1px; }
+    a:hover { text-decoration-thickness:2px; }
+    :focus-visible { outline:3px solid #225ca9; outline-offset:5px; }
+    .skip { position:fixed; left:16px; top:-100px; background:var(--ink); color:white; padding:12px 20px; z-index:10; }
+    .skip:focus { top:12px; }
+    .wrap { width:min(1440px,calc(100% - 80px)); margin-inline:auto; }
+    .masthead { border-bottom:1px solid var(--line); }
+    .masthead-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:80px; }
+    .brand { font-weight:800; letter-spacing:-.8px; font-size:23px; text-decoration:none; }
+    .brand span { font-weight:400; color:var(--muted); }
+    .edition { font:14px/1.5 "Courier New",monospace; text-align:right; color:var(--muted); }
+    .hero { display:grid; grid-template-columns:1.35fr 1fr; gap:64px; align-items:end; padding-block:65px 48px; }
+    h1 { font:400 clamp(56px,6.6vw,100px)/.94 Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif; letter-spacing:-1.5px; text-transform:uppercase; margin:0 0 26px; }
+    .intro { max-width:570px; font-size:18px; color:var(--muted); margin:0; }
+    .profile { border-top:3px solid var(--ink); padding-top:16px; }
+    .profile h2 { font-size:14px; margin:0 0 16px; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); margin:0 0 20px; gap:16px; }
+    .metrics div { border-right:1px solid var(--line); padding-right:16px; }
+    .metrics div:last-child { border:0; }
+    .metrics dt { font-size:14px; color:var(--muted); }
+    .metrics dd { font-size:29px; line-height:1.3; font-weight:700; margin:3px 0 0; letter-spacing:-1px; }
+    .metrics dd span { font-size:14px; font-weight:400; letter-spacing:0; }
+    .profile p { color:var(--muted); font-size:14px; margin:0; }
+    .budget { background:var(--ink); color:white; display:grid; grid-template-columns:1fr 1.1fr; gap:48px; padding:32px; }
+    .budget-title { font-size:18px; line-height:1.4; letter-spacing:0; color:#e1e4de; margin-bottom:12px; }
+    .budget-total { display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; }
+    .budget-total strong { font-size:48px; line-height:1.15; letter-spacing:-2px; }
+    .budget-total span { color:#d4d8d1; font-size:15px; }
+    .budget p { font-size:14px; color:#e1e4de; margin:12px 0 0; max-width:620px; }
+    .budget-list { display:grid; grid-template-columns:repeat(3,1fr); gap:16px 20px; margin:0; }
+    .budget-list dt { font-size:14px; color:#cbd0c9; }
+    .budget-list dd { font-size:21px; margin:2px 0 0; font-weight:700; }
+    .budget-list .reserve { color:#c6e5ce; }
+    .budget-footnote { font-size:14px; color:var(--muted); padding:12px 0 24px; margin:0; }
+    .navigation { position:sticky; top:0; z-index:3; background:var(--paper); border-block:1px solid var(--line); }
+    .navigation-inner { display:flex; gap:28px; align-items:center; min-height:62px; flex-wrap:wrap; padding-block:10px; }
+    .navigation a { font-weight:700; font-size:14px; padding-block:8px; text-decoration:none; }
+    .navigation a:hover { text-decoration:underline; }
+    .navigation small { margin-left:auto; color:var(--muted); font-size:14px; }
+    .legend { padding-top:25px; color:var(--muted); font-size:14px; margin:0; }
+    .legend strong { color:var(--ink); }
+    .category { padding-top:48px; }
+    .section-heading { display:flex; align-items:baseline; gap:18px; margin-bottom:10px; }
+    .section-number { font:14px "Courier New",monospace; color:var(--muted); }
+    h2 { font-size:29px; line-height:1.2; letter-spacing:-.7px; margin:0; }
+    .section-note { color:var(--muted); font-size:15px; margin:0 0 24px; max-width:850px; }
+    .table-region { border:1px solid var(--line); background:var(--white); padding:12px; }
+    table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.55; }
+    caption { text-align:left; padding:15px 18px; font:700 14px/1.5 "Courier New",monospace; letter-spacing:.4px; border-bottom:1px solid var(--line); background:#eceee7; }
+    thead th { background:#f8f9f5; text-align:left; font-size:14px; font-weight:700; padding:13px 12px; border-bottom:1px solid var(--line); vertical-align:bottom; }
+    td,tbody th { padding:20px 12px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+    tbody tr:last-child > * { border-bottom:0; }
+    tbody th { font-weight:700; }
+    col.element { width:10%; } col.model { width:17%; } col.condition { width:9%; } col.price { width:10%; } col.link { width:11%; } col.diagnostic { width:29%; } col.verdict { width:14%; }
+    td p { margin:0 0 8px; } td p:last-child { margin-bottom:0; }
+    .model-name { font-size:14px; font-weight:700; }
+    .sub { display:block; margin-top:5px; font-size:14px; color:var(--muted); }
+    .price-main { display:block; font-size:19px; line-height:1.3; font-weight:700; white-space:nowrap; }
+    .price-target { display:block; margin-top:5px; color:var(--muted); font-size:14px; }
+    .product-link { display:inline-block; font-weight:700; }
+    .status { display:inline-block; border:1px solid currentColor; padding:8px 12px; font-size:14px; font-weight:700; line-height:1.4; }
+    .buy { color:var(--green); background:var(--green-bg); }
+    .negotiate { color:var(--amber); background:var(--amber-bg); }
+    .reject { color:var(--red); background:var(--red-bg); }
+    .new { color:var(--green); font-weight:700; }
+    .rationale { padding:18px 20px; border-left:3px solid var(--ink); background:#eceee7; margin:20px 0 0; font-size:14px; max-width:1050px; }
+    .rationale p { margin:0 0 10px; } .rationale p:last-child { margin:0; }
+    details { margin-top:18px; font-size:14px; }
+    summary { cursor:pointer; font-weight:700; padding:10px 0; }
+    details ul { padding-left:22px; margin:8px 0 0; max-width:980px; } details li { margin-bottom:9px; }
+    .closing { margin-top:48px; padding:26px; border:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:32px; background:#eceee7; }
+    .closing h2 { font-size:20px; margin-bottom:12px; }
+    .closing p { font-size:14px; margin:0; }
+    .closing ul { padding-left:20px; margin:0; font-size:14px; } .closing li { margin-bottom:8px; }
+    footer { padding-block:32px; color:var(--muted); font-size:14px; display:flex; gap:20px; justify-content:space-between; }
+    footer p { margin:0; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+    .mobile-label { display:none; }
+    @media (min-width:1001px) { tbody tr:hover { background:#fafbf7; } }
+    @media (max-width:1100px) { .wrap { width:calc(100% - 48px); } .hero { gap:32px; } .budget { gap:28px; } }
+    @media (max-width:1000px) {
+      .table-region { border:0; background:transparent; padding:0; }
+      table,tbody { display:block; }
+      caption { display:block; border:1px solid var(--line); margin-bottom:12px; }
+      thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+      tbody tr { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); background:white; margin-top:14px; padding:18px; gap:16px 24px; }
+      tbody th,td { display:block; padding:0; border:0; }
+      tbody th { grid-column:1 / -1; font-size:14px; border-bottom:1px solid var(--line)!important; padding-bottom:12px; }
+      td.model-cell { grid-column:1 / -1; }
+      .model-name { font-size:20px; }
+      td.diagnostic-cell { grid-column:1 / -1; }
+      td.verdict-cell { grid-column:1 / -1; border-top:1px solid var(--line); padding-top:14px; }
+      .mobile-label { display:block; color:var(--muted); font-size:14px; font-weight:700; margin-bottom:5px; }
+      .verdict-cell .mobile-label { display:inline; margin-right:10px; }
+      .verdict-cell .sub { display:inline; margin-left:10px; }
+      .model-cell .mobile-label { display:none; }
+      table { font-size:14px; }
+    }
+    @media (max-width:650px) {
+      .wrap { width:calc(100% - 32px); }
+      .masthead-inner { min-height:68px; }
+      .edition { font-size:14px; }
+      .brand { font-size:20px; }
+      .hero { grid-template-columns:1fr; padding-block:36px 28px; gap:30px; }
+      h1 { font-size:64px; }
+      .intro { font-size:16px; }
+      .budget { grid-template-columns:1fr; padding:23px; gap:24px; }
+      .budget-total strong { font-size:42px; }
+      .budget-list { gap:14px; }
+      .budget-list dd { font-size:19px; }
+      .navigation-inner { gap:8px 20px; min-height:58px; }
+      .navigation a { font-size:14px; }
+      .navigation small { display:none; }
+      .category { padding-top:36px; }
+      h2 { font-size:26px; }
+      .section-heading { gap:12px; }
+      .section-note { font-size:14px; }
+      .closing { grid-template-columns:1fr; padding:20px; gap:25px; }
+      footer { flex-direction:column; gap:10px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; } }
+    @media print {
+      body { background:white; font-size:14px; }
+      .wrap { width:100%; }
+      .masthead-inner { min-height:45px; }
+      .hero { padding:24px 0; gap:24px; }
+      h1 { font-size:48px; }
+      .intro { font-size:14px; }
+      .navigation,.skip,.legend,details { display:none; }
+      .budget { background:white; color:black; border:2px solid black; padding:18px; gap:20px; }
+      .budget p,.budget-title,.budget-total span,.budget-list dt,.budget-list .reserve { color:black; }
+      .budget-total strong { font-size:32px; }
+      .budget-list dd { font-size:16px; }
+      .category { padding-top:24px; }
+      .table-region { border:1px solid #aaa; }
+      table { display:table; font-size:14px; }
+      caption { display:table-caption; margin:0; border:0; border-bottom:1px solid #aaa; padding:8px; }
+      thead { display:table-header-group; position:static; width:auto; height:auto; overflow:visible; clip-path:none; }
+      tbody { display:table-row-group; }
+      tbody tr { display:table-row; padding:0; margin:0; break-inside:avoid; }
+      td,tbody th { display:table-cell; padding:8px; border-bottom:1px solid #aaa!important; font-size:14px; }
+      tbody th { text-transform:none; letter-spacing:0; }
+      thead th { font-size:14px; padding:8px; }
+      .model-name { font-size:14px; }
+      .mobile-label { display:none!important; }
+      .price-main { font-size:14px; }
+      .sub,.price-target,.status { font-size:14px; }
+      .rationale,.closing { font-size:14px; padding:12px; }
+      .section-note,.closing p,.closing ul { font-size:14px; }
+      h2 { font-size:22px; }
+      a { text-decoration:underline; }
+      footer { font-size:14px; padding-block:20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar a la comparativa</a>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="brand" href="#contenido" aria-label="Snow Compras, inicio">SNOW<span> / COMPRAS</span></a>
+      <div class="edition">AUDITORÍA DE MATERIAL<br><time datetime="2026-10-07">07 OCT 2026</time> · ESPAÑA</div>
+    </div>
+  </header>
+  <main id="contenido" class="wrap" tabindex="-1">
+    <div class="hero">
+      <div>
+        <h1>Equipo para<br>progresar.</h1>
+        <p class="intro">Tabla noble, apoyo para ganar velocidad y estética blanco y negro. Una comparativa con precios reales y las comprobaciones que faltan antes de comprar.</p>
+      </div>
+      <section class="profile" aria-labelledby="perfil-title">
+        <h2 id="perfil-title">El equipo tiene que encajar contigo.</h2>
+        <dl class="metrics">
+          <div><dt>Altura</dt><dd>166 <span>cm</span></dd></div>
+          <div><dt>Peso</dt><dd>66,5 <span>kg</span></dd></div>
+          <div><dt>Pie habitual</dt><dd>40,5 <span>EUR</span></dd></div>
+        </dl>
+        <p><strong>Objetivo:</strong> tabla 151–153 cm · patín 246–250 mm · flex 4–6 · fijaciones M · botas nuevas MP 26–26,5 · chaqueta S holgada o M ajustada.</p>
+      </section>
+    </div>
+    <section class="budget" aria-labelledby="presupuesto-title">
+      <div>
+        <h2 id="presupuesto-title" class="budget-title">Presupuesto objetivo, si aceptan las ofertas</h2>
+        <div class="budget-total"><strong>461,98 €</strong><span>de un máximo de 500 €</span></div>
+        <p>A precios anunciados: <strong>501,98 € antes de gastos.</strong> La cifra objetivo requiere negociar el pack y la ropa. Ninguna oferta está aceptada y el material usado sigue pendiente de inspección.</p>
+      </div>
+      <dl class="budget-list">
+        <div><dt>Pack K2 + Salomon</dt><dd>180,00 €</dd></div>
+        <div><dt>Botas nuevas</dt><dd>126,99 €</dd></div>
+        <div><dt>Casco nuevo</dt><dd>44,99 €</dd></div>
+        <div><dt>Anorak blanco</dt><dd>50,00 €</dd></div>
+        <div><dt>Pantalón negro</dt><dd>60,00 €</dd></div>
+        <div class="reserve"><dt>Margen para gastos</dt><dd>38,02 €</dd></div>
+      </dl>
+    </section>
+    <p class="budget-footnote">El cálculo cubre tabla, fijaciones, botas, casco, chaqueta y pantalón. No incluye máscara OTG, guantes ni mantenimiento. Envío y protección de compra deben caber en el margen.</p>
+    <nav class="navigation" aria-label="Categorías de la comparativa">
+      <div class="navigation-inner">
+        <a href="#catalogo" class="all-products" hidden>Todo el equipo</a>
+        <a href="#tabla">01 Tabla / Fijaciones</a><a href="#botas">02 Botas</a><a href="#casco">03 Casco</a><a href="#ropa">04 Ropa</a>
+        <small>9 opciones · enlaces directos</small>
+      </div>
+    </nav>
+    <p class="legend"><strong>Cómo leer los veredictos.</strong> Comprar: sujeto a ajuste y talla. Negociar: completar primero la auditoría pendiente. Descartar: incumple una condición o el presupuesto. Los objetivos de precio son propuestas, no descuentos confirmados.</p>
+
+    <section class="catalog" id="catalogo" aria-labelledby="catalog-title" hidden>
+      <div class="catalog-heading">
+        <h2 id="catalog-title">Explora el equipo.</h2>
+        <div class="view-switch" role="group" aria-label="Vista de productos"><button type="button" id="grid-view" aria-pressed="true">Catálogo</button><button type="button" id="table-view" aria-pressed="false">Tabla</button></div>
+      </div>
+      <form id="filters" role="search" aria-label="Buscar y filtrar equipamiento">
+        <div class="filter-search"><label for="search">Buscar producto</label><input id="search" type="search" placeholder="Marca, talla, BOA, 10K…" autocomplete="off"></div>
+        <div><label for="category">Categoría</label><select id="category"><option value="all">Todo el equipo</option><option value="tabla">Tabla / Fijaciones</option><option value="botas">Botas</option><option value="casco">Casco</option><option value="ropa">Ropa</option></select></div>
+        <div><label for="condition">Estado</label><select id="condition"><option value="all">Todos</option><option value="new">Nuevo</option><option value="used">2ª mano</option></select></div>
+        <div><label for="verdict">Veredicto</label><select id="verdict"><option value="all">Todos</option><option value="buy">Comprar</option><option value="negotiate">Negociar</option><option value="reject">Descartar</option></select></div>
+        <div><label for="max-price">Precio máximo (€)</label><input id="max-price" type="number" min="0" max="10000" step="0.01" inputmode="decimal" placeholder="Sin límite" aria-describedby="price-help"></div>
+        <div><label for="sort">Ordenar por</label><select id="sort"><option value="original">Selección original</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="verdict">Veredicto</option><option value="name">Nombre A–Z</option></select></div>
+      </form>
+      <div class="catalog-results"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">9 productos</p><button type="button" id="reset-filters">Limpiar filtros</button></div>
+      <p id="price-help" class="catalog-help">Los filtros y la ordenación usan el precio anunciado. Las ofertas propuestas aparecen aparte. En la vista de tabla, se ordena dentro de cada categoría.</p>
+      <div class="product-grid" id="products"></div>
+      <div class="empty-state" id="empty-state" hidden><h3>No hay productos con estos filtros.</h3><p>Prueba otra talla, amplía el precio o limpia los filtros. Una búsqueda sin resultados no cambia los criterios de compra.</p><button type="button" id="empty-reset">Ver todo el equipo</button></div>
+      <p class="photo-note">Fotos originales de anuncios y tiendas. La galería permite ampliar; las imágenes de productos nuevos son comerciales y no acreditan el estado de una unidad concreta. Necesitan conexión a internet.</p>
+    </section>
+
+    <section class="category" id="tabla" aria-labelledby="tabla-title">
+      <div class="section-heading"><span class="section-number" aria-hidden="true">01 /</span><h2 id="tabla-title">Tabla / Fijaciones</h2></div>
+      <p class="section-note">La vía económica es un pack usado cerca de 200 €. La longitud por sí sola no basta: hay que confirmar temporada, patín y estado estructural.</p>
+      <div class="table-region">
+        <table role="table" aria-describedby="tabla-reason">
+          <caption>Comparativa de tablas y fijaciones · 3 opciones</caption>
+          <colgroup><col class="element"><col class="model"><col class="condition"><col class="price"><col class="link"><col class="diagnostic"><col class="verdict"></colgroup>
+          <thead role="rowgroup"><tr role="row"><th scope="col" id="t-element">Elemento</th><th scope="col" id="t-model">Marca / Modelo / Talla</th><th scope="col" id="t-state">Estado</th><th scope="col" id="t-price">Precio (€)</th><th scope="col" id="t-link">Enlace / Plataforma</th><th scope="col" id="t-audit">Diagnóstico visual y señales de alerta</th><th scope="col" id="t-verdict">Veredicto</th></tr></thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" id="k2" role="rowheader">Pack tabla + fijaciones</th>
+              <td class="model-cell" role="cell" headers="k2 t-model"><span class="model-name">K2 Raygun 153</span><span class="sub">Salomon Rhythm M · gráfica azul/roja y fijaciones negras</span></td>
+              <td role="cell" headers="k2 t-state"><span class="mobile-label" aria-hidden="true">Estado</span>2ª mano</td>
+              <td role="cell" headers="k2 t-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">200 €</span><span class="price-target">Oferta propuesta: 180 €</span></td>
+              <td role="cell" headers="k2 t-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/tabla-snowboard-k2-raygun-153---fijaciones-salomon-1295381271" aria-label="Ver pack K2 Raygun 153 y Salomon Rhythm M en Wallapop">Wallapop</a><span class="sub">Robledo de Chavela</span></td>
+              <td class="diagnostic-cell" role="cell" headers="k2 t-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span><p>Fotos confirman 153 cm. Marcas visibles y <strong>suela fotografiada parcialmente</strong>.</p><p>Faltan suela completa, cantos, inserts desmontados y detalles de carracas/pivotes. <strong>Año y patín sin confirmar.</strong> La gráfica se aparta del monocromo.</p></td>
+              <td class="verdict-cell" role="cell" headers="k2 t-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status negotiate">Negociar</span><span class="sub">Condicionado a medidas y auditoría</span></td>
+            </tr>
+            <tr role="row">
+              <th scope="row" id="sight" role="rowheader">Tabla</th>
+              <td class="model-cell" role="cell" headers="sight t-model"><span class="model-name">Salomon Sight 2027</span><span class="sub">153 Regular · patín 250 mm · flex medio · 2×4</span></td>
+              <td role="cell" headers="sight t-state"><span class="mobile-label" aria-hidden="true">Estado</span><span class="new">Nuevo</span></td>
+              <td role="cell" headers="sight t-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">362,90 €</span><span class="price-target">Sin fijaciones</span></td>
+              <td role="cell" headers="sight t-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://www.glisshop.es/tablas-de-snowboard/salomon/sight88644779" aria-label="Ver Salomon Sight 2027 en Glisshop">Glisshop</a><span class="sub">153 en stock al consultar</span></td>
+              <td class="diagnostic-cell" role="cell" headers="sight t-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>Medidas y perfil documentados. Fotografías comerciales, sin inspección de la unidad. <strong>Consume demasiado presupuesto</strong> para completar el equipo por 500 €.</td>
+              <td class="verdict-cell" role="cell" headers="sight t-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status reject">Descartar</span><span class="sub">Para el presupuesto completo de 500 €</span></td>
+            </tr>
+            <tr role="row">
+              <th scope="row" id="union" role="rowheader">Fijaciones</th>
+              <td class="model-cell" role="cell" headers="union t-model"><span class="model-name">Union STR</span><span class="sub">M · gris y negro · opción independiente</span></td>
+              <td role="cell" headers="union t-state"><span class="mobile-label" aria-hidden="true">Estado</span>2ª mano</td>
+              <td role="cell" headers="union t-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">120 €</span><span class="price-target">Oferta propuesta: 90–100 €</span></td>
+              <td role="cell" headers="union t-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/attacchi-snowboard-union-str-taglia-m-1083986006" aria-label="Ver fijaciones Union STR M en Wallapop">Wallapop</a></td>
+              <td class="diagnostic-cell" role="cell" headers="union t-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>Sin fracturas evidentes en vistas generales. Discos y tornillería fotografiados. Faltan macros de pivotes/dientes y vídeo de carracas. <strong>Comprobar ajuste con bota 41</strong>: el rango M cambia según temporada.</td>
+              <td class="verdict-cell" role="cell" headers="union t-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status negotiate">Negociar</span><span class="sub">Solo si compras una tabla suelta</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="rationale" id="tabla-reason">
+        <p><strong>Encaje técnico.</strong> La Sight 153 combina flex medio, camber entre los pies y rocker en extremos para progresar con apoyo y estabilidad; su patín de 250 mm cumple el límite. <a href="https://www.salomon.com/en-us/product/sight-li1327/L49293000">Ficha oficial de Salomon</a>.</p>
+        <p>La Raygun es el candidato económico, pero <strong>todavía no está validada para tus medidas</strong>. Hay temporadas con Raygun 153 de 245 mm: si esa unidad queda fuera de 246–250 mm, se descarta. Las Rhythm tienen una respuesta suave. <a href="https://www.outdoorshops.cz/user/documents/upload/katalogy/F19_K2Snowboarding_catalog.pdf">Catálogo K2 (PDF)</a>.</p>
+      </div>
+      <details><summary>Qué exigir antes de aprobar tabla y fijaciones</summary><ul><li>Suela completa a contraluz y primeros planos de cada surco. Rechazar núcleo expuesto, abultamientos y delaminación.</li><li>Cantos de todo el perímetro. Rechazar metal fisurado, deformado hacia dentro u óxido estructural profundo.</li><li>Topsheet e inserts con las fijaciones desmontadas. Rechazar grietas estructurales, núcleo visible y roscas dañadas.</li><li>Macros de baseplate, highback y pivotes; dientes de straps y vídeo de cada carraca funcionando. Rechazar fisuras por fatiga y mecanismos defectuosos.</li></ul></details>
+    </section>
+
+    <section class="category" id="botas" aria-labelledby="botas-title">
+      <div class="section-heading"><span class="section-number" aria-hidden="true">02 /</span><h2 id="botas-title">Botas</h2></div>
+      <p class="section-note"><strong>Obligatoriamente nuevas.</strong> No se ha verificado una opción de 80–100 € que reúna estado nuevo, talla y cierre solicitados.</p>
+      <div class="table-region"><table role="table">
+        <caption>Comparativa de botas · 2 opciones</caption>
+        <colgroup><col class="element"><col class="model"><col class="condition"><col class="price"><col class="link"><col class="diagnostic"><col class="verdict"></colgroup>
+        <thead role="rowgroup"><tr role="row"><th scope="col" id="b-element">Elemento</th><th scope="col" id="b-model">Marca / Modelo / Talla</th><th scope="col" id="b-state">Estado</th><th scope="col" id="b-price">Precio (€)</th><th scope="col" id="b-link">Enlace / Plataforma</th><th scope="col" id="b-audit">Diagnóstico visual y señales de alerta</th><th scope="col" id="b-verdict">Veredicto</th></tr></thead>
+        <tbody role="rowgroup">
+          <tr role="row"><th scope="row" id="dreamscape" role="rowheader">Botas</th><td class="model-cell" role="cell" headers="dreamscape b-model"><span class="model-name">Dreamscape All Road 500</span><span class="sub">EUR 41 · negro y azul · flex 6/10</span></td><td role="cell" headers="dreamscape b-state"><span class="mobile-label" aria-hidden="true">Estado</span><span class="new">Nuevo</span></td><td role="cell" headers="dreamscape b-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">126,99 €</span><span class="price-target">26,99 € sobre el objetivo de 100 €</span></td><td role="cell" headers="dreamscape b-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://www.decathlon.es/es/p/botas-de-snowboard-con-ajuste-rapido-hombre-dreamscape-all-road-500/305902/c382c231c344m8734563" aria-label="Ver botas nuevas Dreamscape All Road 500 en Decathlon">Decathlon</a><span class="sub">41 seleccionable</span></td><td class="diagnostic-cell" role="cell" headers="dreamscape b-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>Cierre <strong>Habu de BOA + velcro</strong>, botín termoformable. Fotografías comerciales. Confirmar Mondopoint en etiqueta y probar ajuste: talón sujeto y dedos sin compresión dolorosa.</td><td class="verdict-cell" role="cell" headers="dreamscape b-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status buy">Comprar</span><span class="sub">Tras probar talla y ajuste</span></td></tr>
+          <tr role="row"><th scope="row" id="airtracks" role="rowheader">Botas</th><td class="model-cell" role="cell" headers="airtracks b-model"><span class="model-name">Airtracks Master</span><span class="sub">EUR 41 · 265 mm · negro</span></td><td role="cell" headers="airtracks b-state"><span class="mobile-label" aria-hidden="true">Estado</span><strong>2ª mano</strong></td><td role="cell" headers="airtracks b-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">100 €</span></td><td role="cell" headers="airtracks b-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/botas-snowboard-airtracks-boa-talla-41-260mm-1233798112" aria-label="Ver botas usadas Airtracks Master en Wallapop">Wallapop</a></td><td class="diagnostic-cell" role="cell" headers="airtracks b-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>El vendedor confirma <strong>tres usos</strong>, aunque las llama «prácticamente nuevas». La descripción también identifica un cierre ATOP como BOA. El uso basta para rechazarlas.</td><td class="verdict-cell" role="cell" headers="airtracks b-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status reject">Descartar</span><span class="sub">Incumple la regla de botas nuevas</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="rationale"><p><strong>Encaje técnico.</strong> Las All Road ofrecen sujeción para aumentar velocidad. El flex 6/10 es medio y algo más firme que tu ideal de 5/10. La talla habitual de calle no sustituye la medición del pie ni la prueba con calcetín de snowboard.</p></div>
+    </section>
+
+    <section class="category" id="casco" aria-labelledby="casco-title">
+      <div class="section-heading"><span class="section-number" aria-hidden="true">03 /</span><h2 id="casco-title">Casco</h2></div>
+      <p class="section-note"><strong>Obligatoriamente nuevo.</strong> La talla se decide midiendo el contorno; «cabeza mediana-pequeña» todavía no permite elegir S o M.</p>
+      <div class="table-region"><table role="table">
+        <caption>Casco freestyle nuevo · 1 opción</caption>
+        <colgroup><col class="element"><col class="model"><col class="condition"><col class="price"><col class="link"><col class="diagnostic"><col class="verdict"></colgroup>
+        <thead role="rowgroup"><tr role="row"><th scope="col" id="h-element">Elemento</th><th scope="col" id="h-model">Marca / Modelo / Talla</th><th scope="col" id="h-state">Estado</th><th scope="col" id="h-price">Precio (€)</th><th scope="col" id="h-link">Enlace / Plataforma</th><th scope="col" id="h-audit">Diagnóstico visual y señales de alerta</th><th scope="col" id="h-verdict">Veredicto</th></tr></thead>
+        <tbody role="rowgroup"><tr role="row"><th scope="row" id="wedze" role="rowheader">Casco freestyle</th><td class="model-cell" role="cell" headers="wedze h-model"><span class="model-name">Wedze H-FS 300</span><span class="sub">Negro / antracita · S 52–54 cm / M 55–58 cm</span></td><td role="cell" headers="wedze h-state"><span class="mobile-label" aria-hidden="true">Estado</span><span class="new">Nuevo</span></td><td role="cell" headers="wedze h-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">44,99 €</span></td><td role="cell" headers="wedze h-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://www.decathlon.es/es/p/casco-esqui-y-snowboard-transpirable-adultos-ninos-wedze-h-fs-300/166071/c382c76m8524785" aria-label="Ver casco nuevo Wedze H-FS 300 en Decathlon">Decathlon</a><span class="sub">S y M seleccionables</span></td><td class="diagnostic-cell" role="cell" headers="wedze h-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>Carcasa ABS, <strong>12 ventilaciones</strong>, ajuste posterior y EN 1077 clase B. Contorno pendiente. La compatibilidad conjunta con máscara OTG y gafas graduadas <strong>no está verificada</strong>.</td><td class="verdict-cell" role="cell" headers="wedze h-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status buy">Comprar</span><span class="sub">Después de medir y probar</span></td></tr></tbody>
+      </table></div>
+      <div class="rationale"><p><strong>Encaje técnico y visual.</strong> Perfil freestyle, ventilación y negro discreto dentro del presupuesto. OTG es una característica de la máscara: prueba casco, máscara y gafas graduadas juntos antes de cerrar la compra.</p></div>
+    </section>
+
+    <section class="category" id="ropa" aria-labelledby="ropa-title">
+      <div class="section-heading"><span class="section-number" aria-hidden="true">04 /</span><h2 id="ropa-title">Ropa</h2></div>
+      <p class="section-note">Anorak blanco y pantalón negro para el conjunto Stormtrooper. Mínimo exigido: 10.000 mm de impermeabilidad y 10.000 g/m²/día de transpirabilidad.</p>
+      <div class="table-region"><table role="table">
+        <caption>Comparativa de ropa exterior · 3 opciones</caption>
+        <colgroup><col class="element"><col class="model"><col class="condition"><col class="price"><col class="link"><col class="diagnostic"><col class="verdict"></colgroup>
+        <thead role="rowgroup"><tr role="row"><th scope="col" id="r-element">Elemento</th><th scope="col" id="r-model">Marca / Modelo / Talla</th><th scope="col" id="r-state">Estado</th><th scope="col" id="r-price">Precio (€)</th><th scope="col" id="r-link">Enlace / Plataforma</th><th scope="col" id="r-audit">Diagnóstico visual y señales de alerta</th><th scope="col" id="r-verdict">Veredicto</th></tr></thead>
+        <tbody role="rowgroup">
+          <tr role="row"><th scope="row" id="anorak" role="rowheader">Anorak blanco</th><td class="model-cell" role="cell" headers="anorak r-model"><span class="model-name">Siroko / S</span><span class="sub">Blanco con detalles negros · modelo exacto pendiente</span></td><td role="cell" headers="anorak r-state"><span class="mobile-label" aria-hidden="true">Estado</span>2ª mano</td><td role="cell" headers="anorak r-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">60 €</span><span class="price-target">Oferta propuesta: 50 €</span></td><td role="cell" headers="anorak r-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/chaqueta-snowboard-siroko-talla-s-1309166279" aria-label="Ver anorak blanco Siroko S en Wallapop">Wallapop</a><span class="sub">Santander</span></td><td class="diagnostic-cell" role="cell" headers="anorak r-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span><p><strong>Etiqueta fotografiada: 10K / 10K.</strong> Sin roturas evidentes en las vistas generales.</p><p>Faltan macros de puños, interior y estado/sellado de costuras. Pedir ancho de pecho y largo para confirmar ajuste holgado.</p></td><td class="verdict-cell" role="cell" headers="anorak r-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status negotiate">Negociar</span><span class="sub">Inspección y medidas pendientes</span></td></tr>
+          <tr role="row"><th scope="row" id="pants" role="rowheader">Pantalón negro</th><td class="model-cell" role="cell" headers="pants r-model"><span class="model-name">Siroko / M</span><span class="sub">Negro · modelo exacto pendiente</span></td><td role="cell" headers="pants r-state"><span class="mobile-label" aria-hidden="true">Estado</span>2ª mano</td><td role="cell" headers="pants r-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">70 €</span><span class="price-target">Oferta propuesta: 60 €</span></td><td role="cell" headers="pants r-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/pantalones-snowboard-siroko-m-30k-1299700110" aria-label="Ver pantalón negro Siroko M 30K en Wallapop">Wallapop</a><span class="sub">Torrejón de Ardoz</span></td><td class="diagnostic-cell" role="cell" headers="pants r-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span><p><strong>Etiqueta fotografiada: 30K / 10K.</strong> Bajos aparentemente completos.</p><p>Faltan primeros planos de bordes interiores, polainas y termosellado. Confirmar cintura y entrepierna: talla habitual de pantalón no facilitada.</p></td><td class="verdict-cell" role="cell" headers="pants r-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status negotiate">Negociar</span><span class="sub">Inspección y medidas pendientes</span></td></tr>
+          <tr role="row"><th scope="row" id="jacket100" role="rowheader">Chaqueta bicolor</th><td class="model-cell" role="cell" headers="jacket100 r-model"><span class="model-name">Decathlon 100 / M</span><span class="sub">Negro y blanco</span></td><td role="cell" headers="jacket100 r-state"><span class="mobile-label" aria-hidden="true">Estado</span>2ª mano</td><td role="cell" headers="jacket100 r-price"><span class="mobile-label" aria-hidden="true">Precio</span><span class="price-main">40 €</span></td><td role="cell" headers="jacket100 r-link"><span class="mobile-label" aria-hidden="true">Enlace</span><a class="product-link" href="https://es.wallapop.com/item/chaqueta-snowboard-10k-1299810664" aria-label="Ver chaqueta Decathlon 100 M en Wallapop">Wallapop</a></td><td class="diagnostic-cell" role="cell" headers="jacket100 r-audit"><span class="mobile-label" aria-hidden="true">Diagnóstico</span>La etiqueta acredita <strong>10K de impermeabilidad</strong>, pero no documenta 10K de transpirabilidad. Tampoco muestra el termosellado. El precio bajo no resuelve la falta de documentación.</td><td class="verdict-cell" role="cell" headers="jacket100 r-verdict"><span class="mobile-label" aria-hidden="true">Veredicto</span><span class="status reject">Descartar</span><span class="sub">Mientras no acredite ambos mínimos</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="rationale"><p><strong>Encaje técnico y visual.</strong> Las dos prendas Siroko acreditan los mínimos de membrana en sus etiquetas y consiguen la combinación blanco arriba / negro abajo. La S del anorak es coherente con tu preferencia por prendas holgadas; con 166 cm, el largo del pantalón M necesita comprobarse con medidas reales.</p></div>
+      <details><summary>Qué falta para aprobar la ropa usada</summary><ul><li>Fotos cercanas de puños, cremalleras, bajos por dentro y por fuera, y polainas. Rechazar cortes por cantos o desgaste que comprometa la protección.</li><li>Fotos del interior para comprobar el sellado de costuras, cintas despegadas y deterioro de la membrana.</li><li>Medidas sobre la prenda: pecho y largo del anorak; cintura, cadera y entrepierna del pantalón. La etiqueta S/M no garantiza el ajuste.</li></ul></details>
+    </section>
+    <aside class="closing" aria-label="Condiciones para cerrar las compras">
+      <div><h2>Antes de pagar</h2><ul><li>Medir pie, contorno de cabeza y cintura/entrepierna.</li><li>Completar las fotos y pruebas pendientes del material usado.</li><li>Confirmar total final con envío y protección de compra.</li></ul></div>
+      <div><h2>Alcance de esta auditoría</h2><p>La revisión de fotos detecta señales visibles; no certifica daños ocultos ni funcionamiento. Los precios y las tallas corresponden a la consulta del 7 de octubre de 2026 y pueden cambiar. No se ha comprado material ni contactado con vendedores.</p></div>
+    </aside>
+    <footer><p>SNOW / COMPRAS · Selección para 166 cm y 66,5 kg</p><p>Para guardar en PDF: usa «Imprimir» en tu navegador.</p></footer>
+  </main>
+  <dialog id="photo-dialog" aria-labelledby="photo-title" aria-describedby="photo-source">
+    <div class="dialog-heading"><h2 id="photo-title">Galería del producto</h2><button type="button" id="close-gallery" aria-label="Cerrar galería">Cerrar <span aria-hidden="true">×</span></button></div>
+    <p id="photo-source"></p>
+    <div class="dialog-image-frame"><img id="dialog-image" src="https://cdn.wallapop.com/images/10420/lf/8i/__/c10420p1295381271/i6754429350.jpg?pictureSize=W640" alt="Pack K2 Raygun con fijaciones Salomon, fotografía del anuncio"><p class="image-error" id="dialog-image-error" hidden>La fotografía no está disponible. Puedes consultar el anuncio original.</p></div>
+    <div class="dialog-controls"><button type="button" id="previous-photo" aria-label="Fotografía anterior">Anterior</button><p id="photo-count" role="status" aria-live="polite"></p><button type="button" id="next-photo" aria-label="Fotografía siguiente">Siguiente</button></div>
+    <div id="photo-thumbnails" class="dialog-thumbnails" role="group" aria-label="Elegir fotografía"></div>
+    <a id="photo-listing" href="#">Consultar el anuncio original</a>
+  </dialog>
+<script>/* Shared by the standalone HTML and the tests; no network or storage required. */
+(() => {
+  const normalize = value => String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLocaleLowerCase('es').trim();
+  const rank = { buy: 0, negotiate: 1, reject: 2 };
+  function selectProducts(products, filters = {}) {
+    const terms = normalize(filters.query).split(/\s+/).filter(Boolean);
+    const maximum = Number.isFinite(filters.maxPriceCents) ? Math.max(0, filters.maxPriceCents) : Infinity;
+    const selected = products.filter(product =>
+      (!filters.category || filters.category === 'all' || product.category === filters.category) &&
+      (!filters.condition || filters.condition === 'all' || product.condition === filters.condition) &&
+      (!filters.verdict || filters.verdict === 'all' || product.verdict === filters.verdict) &&
+      product.priceCents <= maximum &&
+      terms.every(term => normalize(product.searchText).includes(term))
+    );
+    if (filters.sort === 'price-asc') selected.sort((a, b) => a.priceCents - b.priceCents);
+    if (filters.sort === 'price-desc') selected.sort((a, b) => b.priceCents - a.priceCents);
+    if (filters.sort === 'name') selected.sort((a, b) => a.name.localeCompare(b.name, 'es'));
+    if (filters.sort === 'verdict') selected.sort((a, b) => rank[a.verdict] - rank[b.verdict]);
+    return selected;
+  }
+  const formatPrice = cents => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+  globalThis.SnowCatalogCore = Object.freeze({ normalize, selectProducts, formatPrice });
+})();
+</script>
+<script>(() => {
+  const wallapop = (folder, listing, photos) => photos.map(id => `https://cdn.wallapop.com/images/10420/${folder}/__/c10420p${listing}/i${id}.jpg?pictureSize=W640`);
+  const decathlon = entries => entries.map(([id, key]) => `https://contents.mediadecathlon.com/p${id}/k$${key}/picture.jpg?format=auto&f=960x0`);
+  globalThis.SnowCatalogPhotos = {
+    k2: wallapop('lf/8i', 1295381271, [6754429350,6754430316,6754430304,6754430333,6754430328,6754430341]),
+    sight: ['https://glisshop-glisshop-fr-storage.omn.proximis.com/Imagestorage/imagesSynchro/735/735/ec53b1c986a840a7fed73d98323fcb7da85e96ea_H27SALO606696_0.jpeg'],
+    union: wallapop('hx/dk', 1083986006, [5322552757,5322552770,5322552767,5322552773,5335008283]),
+    dreamscape: decathlon([[2573034,'190eb546a63c75f810e3a09bf3022123'],[2290128,'54e1fc933827f273a3159ca0090f310d'],[2290131,'51ec7645af654d24f6b2b9d591c49487'],[2290130,'31a0e3df15191ab5db2bb4d112f2fcd2'],[2365372,'a4833cae6fe551ef121cd967ff4c6e28']]),
+    airtracks: wallapop('ke/kk',1233798112,[6314260621,6314260639,6314260654,6314260663,6314260676,6314260684,6314260701,6314260714,6314260727]),
+    wedze: decathlon([[2977665,'ddb3016d4dc9373eb8837ea16e0d23a4'],[2977721,'42a5be033143f69e316f76be05b36cbf'],[2977616,'c0531292a19ce9007e01300824c55eac'],[2977625,'47c2bb4815fe30caba9907c111803158'],[2977577,'4f0e46cb7fedc17603321b481b8c7e5a']]),
+    anorak: wallapop('ln/fz',1309166279,[6773605183,6773605170,6773605155]),
+    pants: wallapop('lh/t3',1299700110,[6718576074,6718576095,6718576086]),
+    jacket100: wallapop('lh/vg',1299810664,[6719445986,6719446009,6719446026])
+  };
+})();
+</script>
+<script>(() => {
+  const { selectProducts, formatPrice } = SnowCatalogCore;
+  const prices = { k2:20000, sight:36290, union:12000, dreamscape:12699, airtracks:10000, wedze:4499, anorak:6000, pants:7000, jacket100:4000 };
+  const categoryNames = { tabla:'Tabla / Fijaciones', botas:'Botas', casco:'Casco', ropa:'Ropa' };
+  const verdictNames = { buy:'Comprar',negotiate:'Negociar',reject:'Descartar' };
+  const productGrid = document.getElementById('products');
+  const form = document.getElementById('filters');
+  const dialog = document.getElementById('photo-dialog');
+  let currentProduct, currentPhoto = 0, galleryTrigger;
+  const rowMap = new Map(), cardMap = new Map();
+  const products = [...document.querySelectorAll('.category tbody tr')].map(row => {
+    const cells = row.children;
+    const id = cells[0].id;
+    const section = row.closest('.category');
+    const status = cells[6].querySelector('.status');
+    const product = {
+      id, name:cells[1].querySelector('.model-name').textContent,
+      category:section.id, condition:cells[2].querySelector('.new')?'new':'used',
+      verdict:status.classList.contains('buy')?'buy':status.classList.contains('negotiate')?'negotiate':'reject',
+      priceCents:prices[id], searchText:row.textContent,
+      spec:cells[1].querySelector('.sub').textContent,
+      target:cells[3].querySelector('.price-target')?.textContent || '',
+      link:cells[4].querySelector('a').href,
+      platform:cells[4].querySelector('a').textContent,
+      location:cells[4].querySelector('.sub')?.textContent || '',
+      verdictNote:cells[6].querySelector('.sub').textContent,
+      audit:cells[5].innerHTML,
+      rationale:section.querySelector('.rationale')?.innerHTML || '',
+      photos:SnowCatalogPhotos[id] || []
+    };
+    rowMap.set(id,row);
+    return product;
+  });
+  const el = (tag, className, text) => { const node=document.createElement(tag); if(className)node.className=className; if(text!==undefined)node.textContent=text; return node; };
+  const button = (text,label) => { const node=el('button','',text); node.type='button'; if(label)node.setAttribute('aria-label',label); return node; };
+
+  function updateImage(img,error,src,alt) {
+    error.hidden=true; img.hidden=false;
+    img.onerror=()=>{ img.hidden=true; error.hidden=false; };
+    img.onload=()=>{ img.hidden=false; error.hidden=true; };
+    img.alt=alt; img.src=src;
+  }
+
+  function createCard(product) {
+    let photoIndex=0;
+    const card=el('article','product-card');
+    card.setAttribute('aria-labelledby',`card-title-${product.id}`);
+    const media=el('div','card-media');
+    media.append(el('span','media-type',product.condition==='new'?'Nuevo':'2ª mano'));
+    const open=button('',`Ampliar fotografías de ${product.name}`); open.className='image-open';
+    const img=el('img'); img.loading='lazy'; img.decoding='async';
+    const error=el('p','image-error','Foto no disponible. Consulta el anuncio.'); error.hidden=true;
+    open.append(img,error,el('span','zoom-label','Ampliar'));
+    open.addEventListener('click',()=>openGallery(product,photoIndex,open));
+    const controls=el('div','card-gallery-controls');
+    const previous=button('←',`Foto anterior de ${product.name}`);
+    const next=button('→',`Foto siguiente de ${product.name}`);
+    const count=el('p','card-photo-count'); count.setAttribute('aria-live','polite');
+    previous.disabled=next.disabled=product.photos.length<2;
+    const showPhoto=()=>{
+      updateImage(img,error,product.photos[photoIndex],`${product.name}. ${product.condition==='new'?'Imagen comercial':'Foto del anuncio'} ${photoIndex+1} de ${product.photos.length}.`);
+      count.textContent=`${photoIndex+1} / ${product.photos.length} fotos`;
+    };
+    previous.addEventListener('click',()=>{photoIndex=(photoIndex-1+product.photos.length)%product.photos.length;showPhoto();});
+    next.addEventListener('click',()=>{photoIndex=(photoIndex+1)%product.photos.length;showPhoto();});
+    controls.append(previous,count,next); media.append(open,controls); card.append(media);
+    showPhoto();
+    const content=el('div','card-content');
+    const title=el('h3','',product.name); title.id=`card-title-${product.id}`;
+    content.append(title,el('p','card-category',categoryNames[product.category]),el('p','card-spec',product.spec));
+    const price=el('div','card-pricing'); price.append(el('strong','',formatPrice(product.priceCents)));
+    if(product.target)price.append(el('span','',product.target));
+    content.append(price);
+    const decision=el('div','card-verdict'); decision.append(el('span',`status ${product.verdict}`,verdictNames[product.verdict]),el('span','sub',product.verdictNote)); content.append(decision);
+    const details=el('details','card-audit'); details.append(el('summary','','Auditoría y encaje técnico'));
+    const audit=el('div','audit-content'); audit.innerHTML=product.audit; audit.querySelectorAll('.mobile-label').forEach(n=>n.remove());
+    const rationale=el('div','rationale'); rationale.innerHTML=product.rationale; audit.append(rationale); details.append(audit); content.append(details);
+    const action=el('div','card-action');
+    const link=el('a','',`Ver en ${product.platform}`); link.href=product.link; link.setAttribute('aria-label',`Ver ${product.name} en ${product.platform}`);
+    action.append(link); if(product.location)action.append(el('span','',product.location)); content.append(action); card.append(content);
+    cardMap.set(product.id,card); return card;
+  }
+
+  function filters() {
+    const raw=document.getElementById('max-price').value;
+    return {query:document.getElementById('search').value,category:document.getElementById('category').value,condition:document.getElementById('condition').value,verdict:document.getElementById('verdict').value,sort:document.getElementById('sort').value,maxPriceCents:raw===''?Infinity:Math.round(Number(raw)*100)};
+  }
+  function render() {
+    const settings=filters();
+    const selected=selectProducts(products,settings);
+    const selectedIds=new Set(selected.map(p=>p.id));
+    products.forEach(p=>{cardMap.get(p.id).hidden=!selectedIds.has(p.id);rowMap.get(p.id).hidden=!selectedIds.has(p.id);});
+    selected.forEach(p=>{productGrid.append(cardMap.get(p.id));rowMap.get(p.id).parentElement.append(rowMap.get(p.id));});
+    document.querySelectorAll('.category').forEach(section=>{section.hidden=!selected.some(p=>p.category===section.id);});
+    document.getElementById('result-count').textContent=`${selected.length} ${selected.length===1?'producto':'productos'} de ${products.length}`;
+    document.getElementById('empty-state').hidden=selected.length!==0;
+    document.querySelectorAll('.navigation a').forEach(a=>{
+      const active=(settings.category==='all'&&a.hash==='#catalogo')||a.hash===`#${settings.category}`;
+      if(active)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+    });
+  }
+  function reset() {form.reset();render();}
+  function setView(view) {
+    document.body.dataset.view=view;
+    document.getElementById('grid-view').setAttribute('aria-pressed',String(view==='grid'));
+    document.getElementById('table-view').setAttribute('aria-pressed',String(view==='table'));
+  }
+  form.addEventListener('submit',e=>e.preventDefault());
+  form.addEventListener('input',render); form.addEventListener('change',render);
+  document.getElementById('reset-filters').addEventListener('click',reset);
+  document.getElementById('empty-reset').addEventListener('click',()=>{reset();document.getElementById('search').focus();});
+  document.getElementById('grid-view').addEventListener('click',()=>setView('grid'));
+  document.getElementById('table-view').addEventListener('click',()=>setView('table'));
+  document.querySelectorAll('.navigation a').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();document.getElementById('category').value=a.hash==='#catalogo'?'all':a.hash.slice(1);render();document.getElementById('catalogo').scrollIntoView({block:'start'});
+  }));
+
+  function displayDialogPhoto() {
+    updateImage(document.getElementById('dialog-image'),document.getElementById('dialog-image-error'),currentProduct.photos[currentPhoto],`${currentProduct.name}. Fotografía ${currentPhoto+1} de ${currentProduct.photos.length}.`);
+    document.getElementById('photo-count').textContent=`Foto ${currentPhoto+1} de ${currentProduct.photos.length}`;
+    document.querySelectorAll('#photo-thumbnails button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===currentPhoto)));
+  }
+  function stepPhoto(offset) {currentPhoto=(currentPhoto+offset+currentProduct.photos.length)%currentProduct.photos.length;displayDialogPhoto();}
+  function openGallery(product,index,trigger) {
+    currentProduct=product;currentPhoto=index;galleryTrigger=trigger;
+    document.getElementById('photo-title').textContent=product.name;
+    document.getElementById('photo-source').textContent=product.condition==='new'?`Imágenes comerciales de ${product.platform}. No son una inspección de la unidad.`:`Fotografías del anuncio en ${product.platform}. La auditoría sigue sujeta a las comprobaciones indicadas.`;
+    const listing=document.getElementById('photo-listing');listing.href=product.link;listing.textContent=`Consultar ${product.name} en ${product.platform}`;
+    const thumbnails=document.getElementById('photo-thumbnails');thumbnails.replaceChildren();
+    product.photos.forEach((src,i)=>{const thumb=button('',`Ver fotografía ${i+1} de ${product.name}`);thumb.setAttribute('aria-pressed','false');const image=el('img');image.src=src;image.alt='';image.loading='lazy';thumb.append(image);thumb.addEventListener('click',()=>{currentPhoto=i;displayDialogPhoto();});thumbnails.append(thumb);});
+    document.getElementById('previous-photo').disabled=document.getElementById('next-photo').disabled=product.photos.length<2;
+    displayDialogPhoto();dialog.showModal();document.getElementById('close-gallery').focus();
+  }
+  document.getElementById('close-gallery').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>galleryTrigger?.focus({preventScroll:true}));
+  document.getElementById('previous-photo').addEventListener('click',()=>stepPhoto(-1));
+  document.getElementById('next-photo').addEventListener('click',()=>stepPhoto(1));
+  dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();stepPhoto(-1);}if(e.key==='ArrowRight'){e.preventDefault();stepPhoto(1);}});
+  dialog.addEventListener('click',e=>{if(e.target===dialog){const rect=dialog.getBoundingClientRect();if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom)dialog.close();}});
+
+  products.forEach(product=>productGrid.append(createCard(product)));
+  document.getElementById('catalogo').hidden=false;
+  document.querySelector('.all-products').hidden=false;
+  document.body.classList.add('is-catalog');setView('grid');render();
+})();
+</script>
+</body>
+</html>
